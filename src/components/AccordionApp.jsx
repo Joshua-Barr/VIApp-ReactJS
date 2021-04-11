@@ -3,8 +3,6 @@ import Accordion from "./Accordion";
 
 import "../styles.css";
 
-
-
 class AccordionApp extends React.Component {
 
   constructor (props) {
