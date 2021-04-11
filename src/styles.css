@@ -1,6 +1,9 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  padding: 34px;
+  font-size: 27px;
+  color: #ffffff
 }
 
 :root{--border-width:1px;
@@ -13,7 +16,7 @@
   min-height:100vh!important
 }
 
-.pagehead h1{font-size:30px}
+.pagehead h1{font-size:40px}
 
 .pagehead p{margin-top:4px;
   margin-bottom:0;font-size:14px;
@@ -42,7 +45,7 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   border-radius: 25px;
-  background-color: rgb(104, 143, 167);
+  background-color: rgb(214, 148, 72);
   color: rgb(255, 255, 255);
   cursor: pointer;
   padding: 25px;
@@ -57,7 +60,7 @@
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .accordion:hover,
 .active {
-  background-color: rgb(136, 133, 187);
+  background-color: rgb(236, 193, 0);
 }
 
 /* Style the accordion content title */

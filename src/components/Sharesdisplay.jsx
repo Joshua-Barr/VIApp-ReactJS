@@ -5,5 +5,5 @@ export default function Sharesdisplay () {
 
     
 
-    return <div>Hello </div>;
+    return <div><h1>List of Shares</h1> </div>;
 }
