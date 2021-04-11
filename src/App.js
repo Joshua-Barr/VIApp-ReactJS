@@ -1,16 +1,18 @@
 import "./styles.css";
 
 import Sharesdisplay from "./components/Sharesdisplay";
-import Button from "./components/Button"
+import AccordionApp from "./components/AccordionApp";
+import Header from "./components/Header"
 
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
       <Sharesdisplay />
-      <Button />
+      <AccordionApp />
+      <AccordionApp />
+      <AccordionApp />
+      <Header />
     </div>
   );
 }

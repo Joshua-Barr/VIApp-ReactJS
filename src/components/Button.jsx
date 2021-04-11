@@ -12,7 +12,7 @@ class MyComponent extends React.Component {
   }
   buttonHandler=()=>{
     if (this.state.value=="Touch me"){
-      this.setState({value:'Touched!'})
+      this.setState({value:'<button> <button/>'})
     }
     else {
       this.setState({value:'Touch me'})
@@ -23,7 +23,7 @@ class MyComponent extends React.Component {
       <div>
           <h1>My Component!</h1>
           <button onClick={this.buttonHandler} className="button">{this.state.value}</button>
-      </div>
+        </div>
     );
   }
 }
