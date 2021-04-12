@@ -16,6 +16,10 @@ class AccordionApp extends React.Component {
       value: this.props.currency
     };
 
+    this.setContent = { 
+      value: this.props.industry
+    };
+
     this.setColour = {
       colour: "fffff"
     };
@@ -34,8 +38,13 @@ class AccordionApp extends React.Component {
     return (
       <div>
         <Accordion
-          title={this.props.title}
+          tracker={this.props.tracker}
+          name={this.props.name}
           content={this.props.currency}
+          industry={this.props.industry}
+          sector={this.props.sector}
+
+          description={this.props.description}
         />
       </div>
     );

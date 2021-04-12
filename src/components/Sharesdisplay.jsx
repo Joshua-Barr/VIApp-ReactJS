@@ -21,11 +21,11 @@ function Sharesdisplay() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> List of Shares </h1>
+        <h1>List of Shares</h1>
       </header>
       
       <div className="user-container">
-        <AccordionApp title={userData.Symbol} currency={userData.Currency}/>
+        <AccordionApp tracker={userData.Symbol} name={userData.Name} currency={userData.Currency} industry={userData.Industry} sector={userData.Sector} description={userData.Description} />
       </div>
     </div>
   );
