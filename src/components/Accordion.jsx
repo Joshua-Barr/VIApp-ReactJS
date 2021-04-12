@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Chart from "./Chart"
 
 import Chevron from "./Chevron";
 
@@ -32,6 +33,7 @@ function Accordion(props) {
         style={{ maxHeight: `${setHeight}` }}
         className="accordion__content"
       >
+        <Chart/>
         <div
           className="accordion__text"
           dangerouslySetInnerHTML={{ __html: props.content }}

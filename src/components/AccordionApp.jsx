@@ -9,11 +9,11 @@ class AccordionApp extends React.Component {
     super(props);
     
     this.setTitle = { 
-      value: "Title of This Tab"
+      value: this.props.title
     };
 
     this.setContent = { 
-      value: "Trending Upwards - Good Buy"
+      value: this.props.currency
     };
 
     this.setColour = {
@@ -34,8 +34,8 @@ class AccordionApp extends React.Component {
     return (
       <div>
         <Accordion
-          title={this.setTitle.value}
-          content={this.setContent.value}
+          title={this.props.title}
+          content={this.props.currency}
         />
       </div>
     );
