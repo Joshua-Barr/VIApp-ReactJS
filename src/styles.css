@@ -1,7 +1,7 @@
 .App {
   font-family: sans-serif;
   text-align: center;
-  padding: 34px;
+  padding: 10px;
   font-size: 27px;
   color: #ffffff
 }
@@ -18,7 +18,13 @@
 
 .pagehead h1{font-size:40px}
 
-.pagehead p{margin-top:4px;
+header {
+  display: block;
+  padding: 15px;
+  color: #323232;
+}
+
+.app-header p{margin-top:30px;
   margin-bottom:0;font-size:14px;
   color:var(--color-text-secondary)}
 
@@ -37,21 +43,22 @@
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   font-size: 13px;
   z-index: 3;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  border-radius: 25px;
-  background-color: rgb(214, 148, 72);
+  border-radius: 20px;
+  background-color: #1a578f;
   color: rgb(255, 255, 255);
   cursor: pointer;
-  padding: 25px;
+  text-indent: 10px;
+  padding: 16px;
   display: flex;
-  align-items: center;
+  align-items: left;
   border: none;
   outline: none;
   transition: background-color 0.8s ease;
@@ -61,14 +68,14 @@
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .accordion:hover,
 .active {
-  background-color: rgb(236, 193, 0);
+  background-color: rgb(163, 216, 77);
 }
 
 /* Style the accordion content title */
 .accordion__title {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 /* Style the accordion chevron icon */
@@ -93,7 +100,7 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 14px;
-  padding: 18px;
+  padding: 12px;
 }
 
 /*-----------------------------------------------------Header CSS */
@@ -124,7 +131,7 @@
   overflow: hidden;
   height: 100%;
   bottom: -1px;
-  background: #1e1e1f;
+  background: #000000;
 }
 .bgTop {
   z-index: -1;
