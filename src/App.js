@@ -1,14 +1,22 @@
 import "./styles.css";
 
 import Sharesdisplay from "./components/Sharesdisplay";
-import Header from "./components/Header"
+import Footer from "./components/Footer";
+
+
 
 export default function App() {
 
-  return (
-    <div className="App">
-      <Sharesdisplay />
-      <Header />
-    </div>
-  );
+  const Symbols = ["WES","CBA"];
+  
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>List of Shares</h1>
+        </header>
+
+        {Symbols.map((_Symbol) => <Sharesdisplay Symbol={Symbol} />)}
+      <Footer />
+      </div>
+    );
 }
