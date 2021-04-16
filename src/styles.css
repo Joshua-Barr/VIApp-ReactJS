@@ -118,7 +118,7 @@ header {
 .waveWrapper {
   background-attachment: fixed;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -126,7 +126,7 @@ header {
   margin: auto;
 }
 .waveWrapperInner {
-  position: absolute;
+  position: fixed;
   width: 100%;
   overflow: hidden;
   height: 100%;
@@ -145,7 +145,7 @@ header {
   z-index: -3;
 }
 .wave {
-  position: absolute;
+  position: fixed;
   left: 0;
   width: 200%;
   height: 100%;
