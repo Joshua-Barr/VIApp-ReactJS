@@ -2,10 +2,10 @@
 
 # dependencies
 /client/node_modules
-/client/public
-/client/.codesandbox
+
 /api/node_modules
-/api/public
+
+
 
 /.pnp
 .pnp.js
