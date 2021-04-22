@@ -6,7 +6,7 @@ import "../styles.css";
 function Sharesdisplay(props) {
   const [userData, setUserData] = useState({});
 
-  const stockUrl = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + props.Symbol + "&apikey=7TRVF3DH5SBONXZY";
+  const stockUrl = "http://localhost:9000/api/" + props.Symbol;
   
   useEffect(() => {
     

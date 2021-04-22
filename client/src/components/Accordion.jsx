@@ -11,6 +11,7 @@ function Accordion(props) {
   const [setRotate, setRotateState] = useState("accordion__icon");
 
   const content = useRef(null);
+  const table = "table";
 
   function toggleAccordion() {
     setActiveState(setActive === "" ? "active" : "");
@@ -38,13 +39,13 @@ function Accordion(props) {
           className="accordion__text"
           dangerouslySetInnerHTML={{ __html: props.content }}
         />
-        <table>
+        <table id={table}>
           <tr>
             <td><div>Industry: {props.industry} <br></br> Sector: {props.sector}</div></td>
-            <td><Chart/></td>
+            <td><Chart /></td>
           </tr>
         </table>
-        <div>{props.description}</div>
+        <div><p><b>{props.description}</b></p></div>
       </div>
     </div>
   );

@@ -14,7 +14,6 @@ export default function Footer (){
   };
 
   return (
-    <header>
     <div class="waveWrapper waveAnimation">
       <div class="waveWrapperInner bgTop">
         <div class="wave waveTop" style={divStyleWaveTop}></div>
@@ -26,7 +25,6 @@ export default function Footer (){
         <div class="wave waveBottom" style={divStyleWaveBottom}></div>
       </div>
     </div>
-    </header>
 
   );
 
