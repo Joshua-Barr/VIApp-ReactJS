@@ -1,7 +1,6 @@
+import Sharesdisplay from "./pages/Sharesdisplay";
+
 import "./styles.css";
-
-import Sharesdisplay from "./components/Sharesdisplay";
-
 
 export default function App() {
 

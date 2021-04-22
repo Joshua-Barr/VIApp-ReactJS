@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import AccordionApp from "./AccordionApp";
-import "../styles.css";
+import AccordionApp from "../components/AccordionApp";
 
+import "../styles.css";
 
 function Sharesdisplay(props) {
   const [userData, setUserData] = useState({});
@@ -21,12 +21,14 @@ function Sharesdisplay(props) {
   };
 
   return (
-    <div className="App">
-      
-      <div className="user-container">
-      <AccordionApp tracker={props.Symbol} name={userData.Name} currency={userData.Currency} industry={userData.Industry} sector={userData.Sector} description={userData.Description} />
+    
+      <div className="App">
+        
+        <div className="user-container">
+        <AccordionApp tracker={props.Symbol} name={userData.Name} currency={userData.Currency} industry={userData.Industry} sector={userData.Sector} description={userData.Description} />
+        </div>
       </div>
-    </div>
+    
   );
 }
 

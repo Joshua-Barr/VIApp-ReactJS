@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import Chart from "./Chart"
-
 import Chevron from "./Chevron";
 
 import "../styles.css";
