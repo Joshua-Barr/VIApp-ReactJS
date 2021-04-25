@@ -18,7 +18,5 @@ import os
 
 import yfinance as yf
 
-tracker = yf.Ticker("WES.AX")
-print(tracker.earnings)
-print(tracker.actions)
-print(tracker.recommendations)
+tracker = yf.Ticker("CBA.AX")
+print(tracker.info)

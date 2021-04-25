@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// DO SOME VALIDATION AND SANITIZING!!!!!!!!!
+
 app.use("/API", testAPIRouter);
 
 // catch 404 and forward to error handler
