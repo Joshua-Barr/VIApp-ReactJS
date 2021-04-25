@@ -19,5 +19,55 @@ import os
 import yfinance as yf
 tracker = sys.argv[1]
 stockdata = yf.Ticker(tracker)
+
+# get stock info
 print(stockdata.info)
-print(sys.argv[1])
+
+# get historical market data
+#print(stockdata.history(period="max"))
+
+# show actions (dividends, splits)
+#print(stockdata.actions)
+
+# show dividends
+#print("Dividends::::::::::::::::::::::::")
+#print(stockdata.dividends)
+
+# show splits
+#print("Splits::::::::::::::::::::::::")
+#print(stockdata.splits)]
+
+# show financials
+#print("Financials::::::::::::::::::::::::")
+#print(stockdata.financials)
+
+# show major holders
+#print("Holders::::::::::::::::::::::::")
+#print(stockdata.major_holders)
+#print(stockdata.institutional_holders)
+
+# show balance sheet
+#print("Balance Sheet:::::::::::::::::::::::::::")
+#print(stockdata.balance_sheet)
+
+# show cashflow
+#print("Cash Flow:::::::::::::::::::::::::::")
+#print(stockdata.cashflow)
+
+# show earnings
+#print("Earnings:::::::::::::::::::::::::::")
+#print(stockdata.earnings)
+
+# show sustainability
+#print("Sustainability:::::::::::::::::::::::::::")
+#print(stockdata.sustainability)
+
+# show analysts recommendations
+#print("Recommendations:::::::::::::::::::::::::::")
+#print(stockdata.recommendations)
+
+# show next event (earnings, etc)
+#print(stockdata.calendar)
+
+# ISIN = International Securities Identification Number
+#print(stockdata.isin)

@@ -25,7 +25,15 @@ function Sharesdisplay(props) {
       <div className="App">
         
         <div className="user-container">
-        <AccordionApp tracker={props.Symbol} name={userData.Name} currency={userData.Currency} industry={userData.Industry} sector={userData.Sector} description={userData.Description} />
+        <AccordionApp 
+          tracker={props.Symbol} 
+          name={userData.longName} 
+          currency={userData.currency} 
+          industry={userData.industry} 
+          sector={userData.sector} 
+          description={userData.longBusinessSummary} 
+          />
+          
         </div>
       </div>
     

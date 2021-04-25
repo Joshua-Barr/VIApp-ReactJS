@@ -3,20 +3,15 @@ var router = express.Router();
 
 router.get("/*", function(req, res, next) {
     
-    console.log(router.route);
     reqparams = router.stack
-    console.log((reqparams[0].path.toString().split("/"))[1])
     reqtracker = (reqparams[0].path.toString().split("/"))[1]
 
     const { spawn } = require('child_process');
     const pyprog = spawn('python', ['../yfinance/yfinance.py', reqtracker]);
 
     pyprog.stdout.on('data', function(data) {
-        res.send(JSON.stringify(data.toString()));
-    });
-
-    pyprog.stderr.on('data', (data) => {
-        res.send(JSON.stringify(data.toString()));
+        var formattedJSON = (data.toString().replace(/{'/g, '{\"').replace(/\\/g, '.').replace(/'}/g, '\"}').replace(/': '/g, '\": \"').replace(/', '/g, '\", \"').replace(/':/g, '\":').replace(/, '/g, ', \"').replace(/None/g, '0').replace(/False/g, '0'));
+        res.send(JSON.parse(formattedJSON));
     });
 });
 
