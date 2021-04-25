@@ -5,10 +5,11 @@ router.get("/*", function(req, res, next) {
     
     console.log(router.route);
     reqparams = router.stack
-    console.log(reqparams[0].path)
+    console.log((reqparams[0].path.toString().split("/"))[1])
+    reqtracker = (reqparams[0].path.toString().split("/"))[1]
 
     const { spawn } = require('child_process');
-    const pyprog = spawn('python', ['../yfinance/yfinance.py']);
+    const pyprog = spawn('python', ['../yfinance/yfinance.py', reqtracker]);
 
     pyprog.stdout.on('data', function(data) {
         res.send(JSON.stringify(data.toString()));

@@ -17,6 +17,7 @@ import sys
 import os
 
 import yfinance as yf
-
-tracker = yf.Ticker("CBA.AX")
-print(tracker.info)
+tracker = sys.argv[1]
+stockdata = yf.Ticker(tracker)
+print(stockdata.info)
+print(sys.argv[1])
