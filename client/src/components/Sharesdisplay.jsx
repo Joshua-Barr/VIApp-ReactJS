@@ -23,7 +23,6 @@ function Sharesdisplay(props) {
   //"CLZ.AX","XTC.AX","CAD.AX","MRQ.AX","ARO.AX","PMY.AX","TEG.AX","ANL.AX","SI6.AX","EM1.AX","TLS.AX","ARE.AX","S32.AX","MML.AX","CLB.AX","AHQ.AX","WCN.AX","ADS.AX","PFT.AX","SPT.AX","HTG.AX","ANN.AX","HLA.AX","RNO.AX","AER.AX","QVE.AX","AZJ.AX","ASP.AX","IDX.AX","ST1.AX","GPR.AX","GEV.AX","BAP.AX","GGE.AX","LSF.AX","SUL.AX","EXL.AX","ABV.AX","MNB.AX","LKE.AX","LRS.AX","CRO.AX","GLA.AX","DDD.AX","CDM.AX","MEC.AX","TWD.AX","SXA.AX","EOL.AX","RFG.AX","M7T.AX","SXY.AX","GTN.AX","NHF.AX","SIG.AX","OCA.AX","TYM.AX","TIE.AX","EGN.AX","MSV.AX","EQE.AX","CZR.AX","NTO.AX","FFL.AX","APD.AX","IME.AX","CIE.AX","MEI.AX","OAR.AX","ICI.AX","BRN.AX","SBR.AX","AUZ.AX","IXR.AX","BAF.AX","ERD.AX","KMD.AX","NHC.AX","ECF.AX","MEL.AX","HVN.AX","SKT.AX","FYI.AX","MCR.AX","WFL.AX","DGO.AX","SPZ.AX","CUP.AX","IRE.AX","MYS.AX","CM8.AX","TFL.AX","RYD.AX","DEG.AX","CWL.AX","AJQ.AX","AKG.AX","CVV.AX","CYG.AX","BFG.AX","IFL.AX","AVC.AX","WTC.AX","BWR.AX","KIN.AX","EXR.AX","IGO.AX","SVW.AX","SNZ.AX","RMY.AX","CCG.AX","EYE.AX","LOM.AX","1AG.AX","MTO.AX","GWR.AX","BSE.AX","GMG.AX","SUP.AX","AVH.AX","BGT.AX","CBY.AX""];
 
   return (
-    
       <div className="App">
         <div className="user-container">
         <AccordionApp 

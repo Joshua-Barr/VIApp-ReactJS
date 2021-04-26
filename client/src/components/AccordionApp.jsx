@@ -50,7 +50,7 @@ class AccordionApp extends React.Component {
           state={this.props.state}
           country={this.props.country}
           website={this.props.website}
-          address={this.props.address1}
+          address={this.props.address}
           industry={this.props.industry}
           logo_url={this.props.logo_url}
 

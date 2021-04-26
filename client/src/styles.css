@@ -41,6 +41,11 @@ td {
   width: 50%;
 }
 
+a.link {
+  font-size: 14px;
+  color: steelblue;
+}
+
 .app-header p{
   margin-top:30px;
   margin-bottom:0;
@@ -241,8 +246,9 @@ Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
 */
 .bm-menu-wrap {
-  position: fixed;
+  position: absolute;
   height: 100%;
+  top: 14%;
 }
 
 /* General sidebar styles */
@@ -250,6 +256,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: #1c1927;
   padding: 1.5em 1em 0;
   font-size: 1.15em;
+  border-radius: 15px;
 }
 
 h1.bm-item {
@@ -282,4 +289,5 @@ a {
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+  top: 0;
 }

@@ -12,7 +12,8 @@ function Accordion(props) {
   const content = useRef(null);
   const table = "table";
   const info = "info";
-  const logo_text = "company logo"
+  const logo_text = "company logo";
+  const link = "link";
 
   function toggleAccordion() {
     setActiveState(setActive === "" ? "active" : "");
@@ -38,7 +39,6 @@ function Accordion(props) {
         
         <div
           className="accordion__text"
-          
         />
         <table id={table}>
           <tr>
@@ -49,11 +49,16 @@ function Accordion(props) {
               <br/> Address: {props.address}
               <br/> State: {props.state}
               <br/> Phone: {props.phone}
-              <br/> Website: {props.website}
+              <br/> Website: <a class={link} href={props.website}>{props.website}</a>
               <br/> Sector: {props.sector}
             </div></td>
 
-            <td><div><p>SOME INDICATORS: <br/> Quarterly Revenue Growth YoY %:greater than 25 <br/> Trailing P/E: 0 - 20 <br/> Price / Earnings to Growth (P/E/G): lt 1 <br/> 1 yr. % Change in EPS (Basic): 25% to 50% and 50% to 100% and gt 100%</p></div></td>
+            <td><div><p>SOME INDICATORS: 
+              <br/> Quarterly Revenue Growth YoY %:greater than 25 
+              <br/> Trailing P/E: 0 - 20 
+              <br/> Price / Earnings to Growth (P/E/G): lt 1 
+              <br/> 1 yr. % Change in EPS (Basic): 25% to 50% and 50% to 100% and gt 100%
+              </p></div></td>
           </tr>
         </table>
         <div><p><b>{props.description}</b></p></div>

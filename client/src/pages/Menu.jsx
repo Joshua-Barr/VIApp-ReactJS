@@ -13,9 +13,11 @@ class Burger extends React.Component {
         return (
             <Menu>
                 <h1>Menu</h1>
-                <a id="home" className="menu-item" href="/">ASX 100</a>
-                <a id="about" className="menu-item" href="/about">SNP 200</a>
-                <a id="contact" className="menu-item" href="/contact">Index</a>
+                <a id="asx 100" className="menu-item" href="/">ASX 100</a>
+                <a id="snp 100" className="menu-item" href="/about">SNP 200</a>
+                <a id="crypto" className="menu-item" href="/about">Crypto</a>
+                <a id="aus etfs" className="menu-item" href="/about">AUS ETF's</a>
+                <a id="search" className="menu-item" href="/contact">Search</a>
                 <a onClick={ this.showSettings } className="menu-item--small" href="www.google.com">Contact</a>
             </Menu>
         );
