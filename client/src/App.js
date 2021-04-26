@@ -1,4 +1,5 @@
 import ASX100 from "./pages/ASX100";
+import SNP200 from "./pages/SNP200";
 import Burger from "./pages/Menu";
 
 import "./styles.css";
@@ -13,6 +14,7 @@ export default function App() {
         <div className="App">
           <Burger />
           <ASX100 />
+          <SNP200 />
         </div>
       </div>
     );

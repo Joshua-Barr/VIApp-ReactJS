@@ -58,6 +58,13 @@ td {
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap");
 
+.info {
+  text-align: justify;
+  padding: 10px;
+  font-weight: bolder;
+  color: floralwhite;
+}
+
 /* Style the accordion section */
 .accordion__section {
   display: flex;
@@ -88,7 +95,7 @@ td {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .accordion:hover,
 .active {
-  background-color: rgb(163, 216, 77);
+  background-color: rgb(197, 163, 70);
 }
 
 /* Style the accordion content title */
@@ -241,8 +248,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* General sidebar styles */
 .bm-menu {
   background: #1c1927;
-  padding: 2.5em 1.5em 0;
+  padding: 1.5em 1em 0;
   font-size: 1.15em;
+}
+
+h1.bm-item {
+  padding-bottom: 30px;
 }
 
 a {

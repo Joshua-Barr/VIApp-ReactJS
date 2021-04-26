@@ -11,6 +11,8 @@ function Accordion(props) {
 
   const content = useRef(null);
   const table = "table";
+  const info = "info";
+  const logo_text = "company logo"
 
   function toggleAccordion() {
     setActiveState(setActive === "" ? "active" : "");
@@ -40,7 +42,17 @@ function Accordion(props) {
         />
         <table id={table}>
           <tr>
-            <td><div>Industry: {props.industry} <br></br> Sector: {props.sector}</div></td>
+            <td><div class={info}><img src={props.logo_url} alt={logo_text}/>
+              <br/>Industry: {props.industry} 
+              <br/> Sector: {props.sector}
+              <br/> Country: {props.country}
+              <br/> Address: {props.address}
+              <br/> State: {props.state}
+              <br/> Phone: {props.phone}
+              <br/> Website: {props.website}
+              <br/> Sector: {props.sector}
+            </div></td>
+
             <td><Chart /></td>
           </tr>
         </table>
