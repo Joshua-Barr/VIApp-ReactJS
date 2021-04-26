@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Chart from "./Chart"
+
 import Chevron from "./Chevron";
 
 import "../styles.css";
@@ -38,7 +38,7 @@ function Accordion(props) {
         
         <div
           className="accordion__text"
-          dangerouslySetInnerHTML={{ __html: props.content }}
+          
         />
         <table id={table}>
           <tr>
@@ -53,7 +53,7 @@ function Accordion(props) {
               <br/> Sector: {props.sector}
             </div></td>
 
-            <td><Chart /></td>
+            <td><div><p>SOME INDICATORS: <br/> Quarterly Revenue Growth YoY %:greater than 25 <br/> Trailing P/E: 0 - 20 <br/> Price / Earnings to Growth (P/E/G): lt 1 <br/> 1 yr. % Change in EPS (Basic): 25% to 50% and 50% to 100% and gt 100%</p></div></td>
           </tr>
         </table>
         <div><p><b>{props.description}</b></p></div>

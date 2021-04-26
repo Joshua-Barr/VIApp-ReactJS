@@ -9,7 +9,7 @@ export default function App() {
     return (
       <div>
         <header className="App-header">
-          <div><h1>List of Shares</h1></div>
+          <div><h1>Value Investing Tool</h1></div>
         </header>
         <div className="App">
           <Burger />
