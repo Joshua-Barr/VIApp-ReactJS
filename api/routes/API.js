@@ -10,8 +10,15 @@ router.get("/*", function(req, res, next) {
     const pyprog = spawn('python', ['../yfinance/yfinance.py', reqtracker]);
 
     pyprog.stdout.on('data', function(data) {
-        var formattedJSON = (data.toString().replace(/{'/g, '{\"').replace(/\\/g, '.').replace(/'}/g, '\"}').replace(/': '/g, '\": \"').replace(/', '/g, '\", \"').replace(/':/g, '\":').replace(/, '/g, ', \"').replace(/None/g, '0').replace(/False/g, '0'));
-        res.send(JSON.parse(formattedJSON));
+        var formattedJSON = (data.toString().replace(/{'/g, '{\"').replace(/\\/g, '.').replace(/'}/g, '\"}').replace(/': '/g, '\": \"').replace(/', '/g, '\", \"').replace(/':/g, '\":').replace(/, '/g, ', \"').replace(/None/g, '0').replace(/False/g, '0').replace(/True/g, '1'));
+        
+        //JSON Check with RegEX - Adds warning to Stocks name if there is an error
+        if (/^[\],:{}\s]*$/.test(formattedJSON.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+            res.send(JSON.parse(formattedJSON));
+        }
+        else{
+            res.send(JSON.parse("{ \"longName\": \"JSON Formatting Failure\" }"));
+        }
     });
 });
 
