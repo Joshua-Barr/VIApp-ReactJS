@@ -10,10 +10,10 @@ function Sharesdisplay(props) {
   
   useEffect(() => {
     
-    getGitHubUserWithFetch();
+    getStockFetch();
   }, []);
 
-  const getGitHubUserWithFetch = async () => {
+  const getStockFetch = async () => {
     
     const response = await fetch(stockUrl);
     const jsonData = await response.json();
