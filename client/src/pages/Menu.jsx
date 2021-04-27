@@ -16,12 +16,13 @@ class BurgerMenu extends React.Component {
                 <h2>Australian :</h2>
                 <a id="asx 100" className="menu-item" href="/asx100">ASX 100</a>
                 <a id="aus etfs" className="menu-item" href="/ausefts">AUS ETF's</a>
-                <h2>American :</h2>
+                <h2>United States :</h2>
                 <a id="snp 100" className="menu-item" href="/snp100">SNP 100</a>
                 <a id="snp 500" className="menu-item" href="/snp500">SNP 500</a>
                 <a id="Nasdaq 100" className="menu-item" href="/nasdaq100">Nasdaq 100</a>
-                <h2>Global :</h2>
-
+                <h2>United Kingdom :</h2>
+                <a id="ftse 100" className="menu-item" href="/ftse100">FTSE 100</a>
+                <a id="ftse 350" className="menu-item" href="/ftse350">FTSE 350</a>
                 <h2>Crypto :</h2>
                 <a id="crypto" className="menu-item" href="/crypto">Crypto</a>
                 <h2>Utilities:</h2>

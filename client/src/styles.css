@@ -46,6 +46,13 @@ a.link {
   color: steelblue;
 }
 
+.home {
+  padding: 12%;
+  font-family: 'Open Sans';
+  font-size: 24px;
+  color: darkorange;
+}
+
 .app-header p{
   margin-top:30px;
   margin-bottom:0;
@@ -152,7 +159,6 @@ a.link {
 .waveWrapper {
   background-attachment: fixed;
   overflow: hidden;
-  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
@@ -254,7 +260,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* General sidebar styles */
 .bm-menu {
   background: #1c1927;
-  padding: 1.5em 1em 0;
+  padding: 0.5em 1em 0;
   font-size: 1.15em;
   border-radius: 15px;
 }
@@ -263,7 +269,11 @@ a {
   color: #ababab;
   text-decoration: inherit;
   padding-top: 2%;
-  font-size: 24px;
+  font-size: 18px;
+}
+
+a#home {
+  padding-bottom: 7%;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -283,15 +293,14 @@ a {
 }
 
 h1.bm-item {
-  padding-bottom: 10px;
+  padding-bottom: 2%;
 }
 
 h2.bm-item {
-  font-size: 16px;
-  text-align: left;
-  padding-left: 10px;
+  font-size: 18px;
+  padding-top: 8%;
+  padding-bottom: 2%;
   color: white;
-  padding-top: 4%;
 }
 
 /* Styling of overlay */

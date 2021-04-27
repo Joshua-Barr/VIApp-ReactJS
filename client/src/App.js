@@ -1,8 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
 import Home from "./pages/Home"
 import ASX100 from "./pages/ASX100"
-import Nasdaq100 from "./pages/Nasdaq-100"
 import SNP100 from "./pages/SNP100"
+import Nasdaq100 from "./pages/Nasdaq-100"
+import FTSE100 from "./pages/FTSE100"
 import BurgerMenu from "./pages/Menu";
 
 import "./styles.css";
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="/asx100" component={ASX100} />
               <Route path="/snp100" component={SNP100} />
               <Route path="/nasdaq100" component={Nasdaq100} />
+              <Route path="/ftse100" component={FTSE100} />
             </Switch>
         </div>
       </div>
