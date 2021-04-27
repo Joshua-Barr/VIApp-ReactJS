@@ -1,6 +1,6 @@
 # Stock Evaluation Web App
 
-This project was bootstrapped with [Create React App] and a NodeJS API was added.
+This project was bootstrapped with Create React App and then Create express app was added for the backend API.
 yfinance contains https://github.com/ranaroussi/yfinance library and is referenced by the NodeJS API
 api contains a backend API running on localhost:9000
 client contains the frontend react-app for displaing the relevant information to the end user
