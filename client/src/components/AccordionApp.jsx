@@ -128,7 +128,8 @@ class AccordionApp extends React.Component {
           netIncomeToCommon={this.props.netIncomeToCommon}
           trailingEps={this.props.trailingEps}
           lastDividendValue={this.props.lastDividendValue}
-          SandP52WeekChange={this.props.SandP52WeekChange}
+          fiftytwoWeekChange={this.props.fiftytwoWeekChange}
+          SandPfiftytwoWeekChange={this.props.SandPfiftytwoWeekChange}
           priceToBook={this.props.priceToBook}
           heldPercentInsiders={this.props.heldPercentInsiders}
           nextFiscalYearEnd={this.props.nextFiscalYearEnd}

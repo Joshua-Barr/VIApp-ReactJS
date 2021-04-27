@@ -119,7 +119,8 @@ function Sharesdisplay(props) {
           netIncomeToCommon={userData.netIncomeToCommon}
           trailingEps={userData.trailingEps}
           lastDividendValue={userData.lastDividendValue}
-          SandP52WeekChange={userData.SandP52WeekChange}
+          fiftytwoWeekChange={userData.fiftytwoWeekChange}
+          SandPfiftytwoWeekChange={userData.SandPfiftytwoWeekChange}
           priceToBook={userData.priceToBook}
           heldPercentInsiders={userData.heldPercentInsiders}
           nextFiscalYearEnd={userData.nextFiscalYearEnd}
