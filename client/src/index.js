@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Footer from './components/Footer';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
     <Footer />
   </React.StrictMode>,
   document.getElementById('root')

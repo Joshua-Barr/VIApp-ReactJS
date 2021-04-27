@@ -1,4 +1,3 @@
-
 import Sharesdisplay from "../components/Sharesdisplay";
 
 import "../styles.css";

@@ -259,15 +259,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-radius: 15px;
 }
 
-h1.bm-item {
-  padding-bottom: 30px;
-}
-
 a {
   color: #ababab;
   text-decoration: inherit;
-  padding: 10px;
-  font-size: 28px;
+  padding-top: 2%;
+  font-size: 24px;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -284,6 +280,18 @@ a {
 /* Individual item */
 .bm-item {
   display: inline-block;
+}
+
+h1.bm-item {
+  padding-bottom: 10px;
+}
+
+h2.bm-item {
+  font-size: 16px;
+  text-align: left;
+  padding-left: 10px;
+  color: white;
+  padding-top: 4%;
 }
 
 /* Styling of overlay */

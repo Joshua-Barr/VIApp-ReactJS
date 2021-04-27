@@ -3,7 +3,7 @@ import React from 'react';
 
 import "../styles.css";
 
-class Burger extends React.Component {
+class BurgerMenu extends React.Component {
     showSettings (event) {
     event.preventDefault();
 
@@ -12,15 +12,23 @@ class Burger extends React.Component {
     render () {
         return (
             <Menu>
-                <h1>Menu</h1>
-                <a id="asx 100" className="menu-item" href="/">ASX 100</a>
-                <a id="snp 100" className="menu-item" href="/about">SNP 200</a>
-                <a id="crypto" className="menu-item" href="/about">Crypto</a>
-                <a id="aus etfs" className="menu-item" href="/about">AUS ETF's</a>
-                <a id="search" className="menu-item" href="/contact">Search</a>
-                <a onClick={ this.showSettings } className="menu-item--small" href="www.google.com">Contact</a>
+                <a id="home" className="menu-item" href="/"><h1>Menu</h1></a>
+                <h2>Australian :</h2>
+                <a id="asx 100" className="menu-item" href="/asx100">ASX 100</a>
+                <a id="aus etfs" className="menu-item" href="/ausefts">AUS ETF's</a>
+                <h2>American :</h2>
+                <a id="snp 100" className="menu-item" href="/snp100">SNP 100</a>
+                <a id="snp 500" className="menu-item" href="/snp500">SNP 500</a>
+                <a id="Nasdaq 100" className="menu-item" href="/nasdaq100">Nasdaq 100</a>
+                <h2>Global :</h2>
+
+                <h2>Crypto :</h2>
+                <a id="crypto" className="menu-item" href="/crypto">Crypto</a>
+                <h2>Utilities:</h2>
+                <a id="search" className="menu-item" href="/search">Search</a>
+                <a id="contact" className="menu-item" href="/contact">Contact</a>
             </Menu>
         );
     }
 }
-export default Burger
+export default BurgerMenu
