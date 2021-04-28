@@ -8,8 +8,10 @@ Client contains the frontend, runs on localhost:3000
 
 
 FEATURES TO ADD:
+
     - OAuth Login
     - DB Backend for Quick Lookups and Historic
     - Key Indicator Calculations (Pass from Express API?)
     - Rank and Sort the Accordian items by Selected Indicator
     - Search tracker page which creates an accordian item by added tracker (single and multiple)
+    - Fix up the Indicators in the accordion component

@@ -22,7 +22,9 @@ class BurgerMenu extends React.Component {
                 <a id="Nasdaq 100" className="menu-item" href="/nasdaq100">Nasdaq 100</a>
                 <h2>United Kingdom :</h2>
                 <a id="ftse 100" className="menu-item" href="/ftse100">FTSE 100</a>
-                <a id="ftse 350" className="menu-item" href="/ftse350">FTSE 350</a>
+                <a id="ftse 250" className="menu-item" href="/ftse250">FTSE 250</a>
+                <h2>Japanese :</h2>
+                <a id="nikkei 225" className="menu-item" href="/nikkei225">Nikkei 225</a>
                 <h2>Crypto :</h2>
                 <a id="crypto" className="menu-item" href="/crypto">Crypto</a>
                 <h2>Utilities:</h2>

@@ -64,7 +64,6 @@ function Accordion(props) {
     if(props.pegRatio === 0){setColourKey6State("White");} //////// Change this later, do this calc manually if the val is 0
   }
 
-
   return (
     <div className="accordion__section">
       <button className={`accordion ${setActive}`} onClick={toggleAccordion}>

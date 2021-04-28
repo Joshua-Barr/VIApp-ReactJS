@@ -5,6 +5,16 @@
 
 /api/node_modules
 
+/yfinance/__pycache__/*
+
+/yfinance/yfinance/__pycache__/*
+dist
+yfinance.egg-info
+*.pyc
+.coverage
+.vscode/
+build/
+
 
 /.pnp
 .pnp.js
