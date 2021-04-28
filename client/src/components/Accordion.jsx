@@ -56,11 +56,13 @@ function Accordion(props) {
       else{setColourKey5State("Red");}
     }
     
-    if(props.pegRatio < 0.8){setColourKey6State("Green");}
+    if(props.pegRatio < 1){setColourKey6State("Green");}
     else{
-      if(props.pegRatio <= 1){setColourKey6State("Orange");}
-      if(props.pegRatio > 1){setColourKey6State("Red");}
+      if(props.pegRatio <= 1.5){setColourKey6State("Orange");}
+      if(props.pegRatio > 1.5){setColourKey6State("Red");}
+      
     }
+    if(props.pegRatio < 0){setColourKey6State("Red");}
     if(props.pegRatio === 0){setColourKey6State("White");} //////// Change this later, do this calc manually if the val is 0
   }
 
