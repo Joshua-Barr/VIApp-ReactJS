@@ -6,7 +6,7 @@ import "../styles.css";
 function Sharesdisplay(props) {
   const [userData, setUserData] = useState({});
 
-  const stockUrl = "http://localhost:9000/api/" + props.Symbol;
+  const stockUrl = "http://115.70.250.223:9000/api/" + props.Symbol;
   
   useEffect(() => {
     
