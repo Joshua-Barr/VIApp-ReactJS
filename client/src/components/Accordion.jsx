@@ -41,35 +41,44 @@ function Accordion(props) {
       setActive === "active" ? "accordion__icon" : "accordion__icon rotate"
     );
 
-    if(!props.userData.analysis.recommendationTrend.trend[0].period === "undefined"){
+    if(typeof props.userData.analysis !== "undefined"){
       setAnalysisState( {
         data: "recived",
-        rec0mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[0].period),
-        rec0mstrongbuy: props.userData.analysis.recommendationTrend.trend[0].strongBuy,
-        rec0mbuy: props.userData.analysis.recommendationTrend.trend[0].buy,
-        rec0mhold: props.userData.analysis.recommendationTrend.trend[0].hold,
-        rec0msell: props.userData.analysis.recommendationTrend.trend[0].sell,
-        rec0mstrongsell: props.userData.analysis.recommendationTrend.trend[0].sell,
-        rec1mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[1].period),
-        rec1mstrongbuy: props.userData.analysis.recommendationTrend.trend[1].strongBuy,
-        rec1mbuy: props.userData.analysis.recommendationTrend.trend[1].buy,
-        rec1mhold: props.userData.analysis.recommendationTrend.trend[1].hold,
-        rec1msell: props.userData.analysis.recommendationTrend.trend[1].sell,
-        rec1mstrongsell: props.userData.analysis.recommendationTrend.trend[1].sell,
-        rec2mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[2].period),
-        rec2mstrongbuy: props.userData.analysis.recommendationTrend.trend[2].strongBuy,
-        rec2mbuy: props.userData.analysis.recommendationTrend.trend[2].buy,
-        rec2mhold: props.userData.analysis.recommendationTrend.trend[2].hold,
-        rec2msell: props.userData.analysis.recommendationTrend.trend[2].sell,
-        rec2mstrongsell: props.userData.analysis.recommendationTrend.trend[2].sell,
-        rec3mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[3].period),
-        rec3mstrongbuy: props.userData.analysis.recommendationTrend.trend[3].strongBuy,
-        rec3mbuy: props.userData.analysis.recommendationTrend.trend[3].buy,
-        rec3mhold: props.userData.analysis.recommendationTrend.trend[3].hold,
-        rec3msell: props.userData.analysis.recommendationTrend.trend[3].sell,
-        rec3mstrongsell: props.userData.analysis.recommendationTrend.trend[3].sell,
-        debtToEquity: props.userData.analysis.financialData.debtToEquity
       })
+      if(typeof props.userData.analysis.recommendationTrend.trend !== "undefined"){
+        if(typeof props.userData.analysis.financialData !== "undefined"){
+          setAnalysisState( {
+            debtToEquity: props.userData.analysis.financialData.debtToEquity,
+            returnOnEquity: props.userData.analysis.financialData.returnOnEquity,
+            
+            rec0mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[0].period),
+            rec0mstrongbuy: props.userData.analysis.recommendationTrend.trend[0].strongBuy,
+            rec0mbuy: props.userData.analysis.recommendationTrend.trend[0].buy,
+            rec0mhold: props.userData.analysis.recommendationTrend.trend[0].hold,
+            rec0msell: props.userData.analysis.recommendationTrend.trend[0].sell,
+            rec0mstrongsell: props.userData.analysis.recommendationTrend.trend[0].sell,
+            rec1mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[1].period),
+            rec1mstrongbuy: props.userData.analysis.recommendationTrend.trend[1].strongBuy,
+            rec1mbuy: props.userData.analysis.recommendationTrend.trend[1].buy,
+            rec1mhold: props.userData.analysis.recommendationTrend.trend[1].hold,
+            rec1msell: props.userData.analysis.recommendationTrend.trend[1].sell,
+            rec1mstrongsell: props.userData.analysis.recommendationTrend.trend[1].sell,
+            rec2mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[2].period),
+            rec2mstrongbuy: props.userData.analysis.recommendationTrend.trend[2].strongBuy,
+            rec2mbuy: props.userData.analysis.recommendationTrend.trend[2].buy,
+            rec2mhold: props.userData.analysis.recommendationTrend.trend[2].hold,
+            rec2msell: props.userData.analysis.recommendationTrend.trend[2].sell,
+            rec2mstrongsell: props.userData.analysis.recommendationTrend.trend[2].sell,
+            rec3mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[3].period),
+            rec3mstrongbuy: props.userData.analysis.recommendationTrend.trend[3].strongBuy,
+            rec3mbuy: props.userData.analysis.recommendationTrend.trend[3].buy,
+            rec3mhold: props.userData.analysis.recommendationTrend.trend[3].hold,
+            rec3msell: props.userData.analysis.recommendationTrend.trend[3].sell,
+            rec3mstrongsell: props.userData.analysis.recommendationTrend.trend[3].sell
+          
+          })
+        }
+      }
     }
 
     if(props.userData.revenueQuarterlyGrowth > 0.25){setColourKey1State("Green");}
@@ -103,8 +112,7 @@ function Accordion(props) {
       
     }
     if(props.userData.pegRatio < 0){setColourKey6State("Red");}
-    if(props.userData.pegRatio === 0){setColourKey6State("White");} //////// Change this later, do this calc manually if the val is 0
-    
+    if(props.userData.pegRatio === 0){setColourKey6State("White");}
     
     if(setAnalysis.debtToEquity/100 < 1){setColourKey9State("Green");}
     else{
@@ -113,13 +121,14 @@ function Accordion(props) {
       
     }
     if(setAnalysis.debtToEquity/100 < 0){setColourKey9State("Red");}
-    if(setAnalysis.debtToEquity/100 === 0){setColourKey9State("White");} //////// Change this later, do this calc manually if the val is 0
+    if(setAnalysis.debtToEquity/100 === 0){setColourKey9State("White");}
+    console.log("ColoursUpdated")
   }
 
   return (
     <div className="accordion__section">
       <button className={`accordion ${setActive}`} onClick={toggleAccordion}>
-        <p className="accordion__title">{props.userData.symbol}: {props.userData.longName}</p>
+        <p className="accordion__title">{props.tracker}: {props.userData.longName}</p>
         <Chevron className={`${setRotate}`} width={10} fill={"#665"} />
       </button>
       <div
@@ -147,20 +156,20 @@ function Accordion(props) {
             </div></td>
 
             <td><div><h3>KEY INDICATORS: </h3></div>
-              <div style={{color: `${setColourKey1}`}}><h4>   Quarterly Revenue Growth (YoY): {parseFloat(props.userData.revenueQuarterlyGrowth*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey2}`}}><h4>   Quarterly Earnings Growth (YoY): {parseFloat(props.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey3}`}}><h4>   Price to Earnings (TTM): {parseFloat(props.userData.trailingPE).toPrecision(4)} </h4></div>
+              <div style={{color: `${setColourKey1}`}}><h4>   Quarterly Revenue Growth (YoY)[gt 25%]: {parseFloat(props.userData.revenueQuarterlyGrowth*100).toPrecision(4)}% </h4></div>
+              <div style={{color: `${setColourKey2}`}}><h4>   Quarterly Earnings Growth (YoY)[gt 0.25%]: {parseFloat(props.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h4></div>
+              <div style={{color: `${setColourKey3}`}}><h4>   Price to Earnings (TTM)[lt 20]: {parseFloat(props.userData.trailingPE).toPrecision(4)} </h4></div>
               <div style={{color: `${setColourKey4}`}}><h4>   Returns Over Five Years: {props.userData.fiveYearAverageReturn} </h4></div>
-              <div style={{color: `${setColourKey5}`}}><h4>   (Growth) Predicted Growth in 5 Years :: {parseFloat(props.userData.fiftytwoWeekChange*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey6}`}}><h4>   (Growth) Price / Earnings to Growth (P/E/G): {props.userData.pegRatio} Ratio </h4></div>
+              <div style={{color: `${setColourKey5}`}}><h4> (Growth) Predicted Growth in 5 Years[gt 20%] {parseFloat(props.userData.fiftytwoWeekChange*100).toPrecision(4)}% </h4></div>
+              <div style={{color: `${setColourKey6}`}}><h4>   (Growth) Price / Earnings / Growth (P/E/G)[gt 1]: {props.userData.pegRatio} </h4></div>
               <div style={{color: `${setColourKey7}`}}><h4> Dividend Consistency </h4></div>
               <div style={{color: `${setColourKey8}`}}><h4> Chart of Last 5yrs Earnings </h4></div>
-              <div style={{color: `${setColourKey9}`}}><h4> Debt to Equity Ratio {parseFloat(setAnalysis.debtToEquity/100).toPrecision(4)} </h4></div>
-              <div style={{color: `${setColourKey10}`}}><h4> Margin/Profit over the last 5 Years? </h4></div>
-              <div style={{color: `${setColourKey11}`}}><h4> Return on Equity, Assets and Capital? </h4></div>
-              <div style={{color: `${setColourKey12}`}}><h4> Earnings Per Share (Last 5 Years): <br/> {} <br/> {} <br/> {} <br/> {} </h4></div>
+              <div style={{color: `${setColourKey9}`}}><h4>  (Management) Debt to Equity Ratio[lt 1]: {parseFloat(setAnalysis.debtToEquity/100).toPrecision(4)} </h4></div>
+              <div style={{color: `${setColourKey10}`}}><h4>  (Management) Return on Equity[gt 20%]: {parseFloat(setAnalysis.returnOnEquity*100).toPrecision(4)}% </h4></div>
+              <div style={{color: `${setColourKey11}`}}><h4> Earnings Per Share (Last 5 Years): <br/> {} <br/> {} <br/> {} <br/> {} </h4></div>
                             
-              <div style={{color: `${setColourKey13}`}}><h4><br/> Approximated growth rate ::::::::::: </h4></div>
+              <div style={{color: `${setColourKey12}`}}><h4><br/> Approximated Fair Price (Based on Growth Rate): </h4></div>
+              <div style={{color: `${setColourKey13}`}}><h4><br/> Approximated Fair Price at 30% CI (Based on Growth Rate): </h4></div>
               
               <div style={{color: `${setColourKey14}`}}><h4><br/> Calculated Stoploss on current stock price </h4></div>
               <div style={{color: "white"}}><h4><br/> Recommendation Trends: </h4></div>

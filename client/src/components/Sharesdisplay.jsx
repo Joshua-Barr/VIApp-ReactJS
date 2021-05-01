@@ -25,6 +25,7 @@ function Sharesdisplay(props) {
         <div className="user-container">
         <AccordionApp 
           userData={userData}
+          tracker={props.Symbol}
           />
         </div>
       </div>

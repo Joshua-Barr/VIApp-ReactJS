@@ -8,7 +8,8 @@ class AccordionApp extends React.Component {
   constructor (props) {
     super(props);
     this.setTitle = { 
-      value: props.userData
+      value: props.userData,
+      tracker: props.tracker
     };
     this.setColour = {
       colour: "fffff"
@@ -31,6 +32,7 @@ class AccordionApp extends React.Component {
       <div>
         <Accordion
           userData={this.props.userData}
+          tracker={this.props.tracker}
         />
       </div>
     );
