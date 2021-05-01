@@ -29,9 +29,8 @@ print(stockdata.info)
 # show actions (dividends, splits)
 #print(stockdata.actions)
 
-# show dividends
-#print("Dividends::::::::::::::::::::::::")
-#print(stockdata.dividends)
+# My hacky way of getting the analysis page
+print('\"analysis\": ' + str(yf.utils.get_json('https://au.finance.yahoo.com/quote/'+ tracker +'/analysis', None , None)) + '}')
 
 # show splits
 #print("Splits::::::::::::::::::::::::")
