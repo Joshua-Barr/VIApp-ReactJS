@@ -14,12 +14,16 @@ export default function Search() {
   };
 
   const runSearch = event => {
-    setDisplayItem(<Sharesdisplay Symbol={searchTerm} />)
+    var regex = new RegExp("^[a-zA-Z.]+$");
+    if(!regex.test(event.target.value)){
+      setDisplayItem(searchTerm.split(",").map((Symbol) => <Sharesdisplay Symbol={Symbol} />))
+    }
   }
   
   return (
     <div className="App">
-      <div class={"searchtext"}>Search for any stock below using its "Yahoo" friendly tracker:</div>
+      <div class={"searchtext"}>Search for any stock below using its "Yahoo" friendly tracker: </div>
+      <div style={{color: "Grey"}}><h6>To Search Multiple Trackers Separate with Comma's (e.g. WES.AX,CBA.AX)</h6></div>
       <input
         type="text"
         placeholder="Search"

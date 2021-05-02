@@ -9,20 +9,20 @@ function Accordion(props) {
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("accordion__icon");
   
-  const [setColourKey1, setColourKey1State] = useState("White")
-  const [setColourKey2, setColourKey2State] = useState("White")
-  const [setColourKey3, setColourKey3State] = useState("White")
-  const [setColourKey4, setColourKey4State] = useState("White")
-  const [setColourKey5, setColourKey5State] = useState("White")
-  const [setColourKey6, setColourKey6State] = useState("White")
-  const [setColourKey7, setColourKey7State] = useState("White")
-  const [setColourKey8, setColourKey8State] = useState("White")
-  const [setColourKey9, setColourKey9State] = useState("White")
-  const [setColourKey10, setColourKey10State] = useState("White")
-  const [setColourKey11, setColourKey11State] = useState("White")
-  const [setColourKey12, setColourKey12State] = useState("White")
-  const [setColourKey13, setColourKey13State] = useState("White")
-  const [setColourKey14, setColourKey14State] = useState("White")
+  const [setColourKey1, setColourKey1State] = useState("Grey")
+  const [setColourKey2, setColourKey2State] = useState("Grey")
+  const [setColourKey3, setColourKey3State] = useState("Grey")
+  const [setColourKey4, setColourKey4State] = useState("Grey")
+  const [setColourKey5, setColourKey5State] = useState("Grey")
+  const [setColourKey6, setColourKey6State] = useState("Grey")
+  const [setColourKey7, setColourKey7State] = useState("Grey")
+  const [setColourKey8, setColourKey8State] = useState("Grey")
+  const [setColourKey9, setColourKey9State] = useState("Grey")
+  const [setColourKey10, setColourKey10State] = useState("Grey")
+  const [setColourKey11, setColourKey11State] = useState("Grey")
+  const [setColourKey12, setColourKey12State] = useState("Grey")
+  const [setColourKey13, setColourKey13State] = useState("Grey")
+  const [setColourKey14, setColourKey14State] = useState("Grey")
 
   const content = useRef(null);
   const table = "table";
@@ -50,26 +50,27 @@ function Accordion(props) {
           setAnalysisState( {
             debtToEquity: props.userData.analysis.financialData.debtToEquity,
             returnOnEquity: props.userData.analysis.financialData.returnOnEquity,
+            growthRate: props.userData.analysis.earningsTrend.trend[4].growth,
             
-            rec0mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[0].period),
+            rec0mperiod: props.userData.analysis.recommendationTrend.trend[0].period,
             rec0mstrongbuy: props.userData.analysis.recommendationTrend.trend[0].strongBuy,
             rec0mbuy: props.userData.analysis.recommendationTrend.trend[0].buy,
             rec0mhold: props.userData.analysis.recommendationTrend.trend[0].hold,
             rec0msell: props.userData.analysis.recommendationTrend.trend[0].sell,
             rec0mstrongsell: props.userData.analysis.recommendationTrend.trend[0].sell,
-            rec1mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[1].period),
+            rec1mperiod: props.userData.analysis.recommendationTrend.trend[1].period,
             rec1mstrongbuy: props.userData.analysis.recommendationTrend.trend[1].strongBuy,
             rec1mbuy: props.userData.analysis.recommendationTrend.trend[1].buy,
             rec1mhold: props.userData.analysis.recommendationTrend.trend[1].hold,
             rec1msell: props.userData.analysis.recommendationTrend.trend[1].sell,
             rec1mstrongsell: props.userData.analysis.recommendationTrend.trend[1].sell,
-            rec2mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[2].period),
+            rec2mperiod: props.userData.analysis.recommendationTrend.trend[2].period,
             rec2mstrongbuy: props.userData.analysis.recommendationTrend.trend[2].strongBuy,
             rec2mbuy: props.userData.analysis.recommendationTrend.trend[2].buy,
             rec2mhold: props.userData.analysis.recommendationTrend.trend[2].hold,
             rec2msell: props.userData.analysis.recommendationTrend.trend[2].sell,
             rec2mstrongsell: props.userData.analysis.recommendationTrend.trend[2].sell,
-            rec3mperiod: JSON.stringify(props.userData.analysis.recommendationTrend.trend[3].period),
+            rec3mperiod: props.userData.analysis.recommendationTrend.trend[3].period,
             rec3mstrongbuy: props.userData.analysis.recommendationTrend.trend[3].strongBuy,
             rec3mbuy: props.userData.analysis.recommendationTrend.trend[3].buy,
             rec3mhold: props.userData.analysis.recommendationTrend.trend[3].hold,
@@ -81,48 +82,62 @@ function Accordion(props) {
       }
     }
 
-    if(props.userData.revenueQuarterlyGrowth > 0.25){setColourKey1State("Green");}
+    if(props.userData.revenueQuarterlyGrowth > 0.25){setColourKey1State("Lime");}
     else{
       if(props.userData.revenueQuarterlyGrowth > 0.1){setColourKey1State("Orange");}
-      else{setColourKey1State("Red");}
+      else{setColourKey1State("Brown");}
     }
 
-    if(props.userData.earningsQuarterlyGrowth > 0.25){setColourKey2State("Green");}
+    if(props.userData.earningsQuarterlyGrowth > 0.25){setColourKey2State("Lime");}
     else{
       if(props.userData.earningsQuarterlyGrowth > 0.1){setColourKey2State("Orange");}
-      else{setColourKey2State("Red");}
+      else{setColourKey2State("Brown");}
     }
     
-    if(props.userData.trailingPE < 20){setColourKey3State("Green");}
+    if(props.userData.trailingPE < 20){setColourKey3State("Lime");}
     else{
       if(props.userData.trailingPE < 40){setColourKey3State("Orange");}
-      else{setColourKey3State("Red");}
+      else{setColourKey3State("Brown");}
     }
 
-    if(props.userData.fiftytwoWeekChange > 0.25){setColourKey5State("Green");}
+    if(setAnalysis.growthRate >= 0.20){setColourKey5State("Lime");}
     else{
-      if(props.userData.fiftytwoWeekChange > 0.1){setColourKey5State("Orange");}
-      else{setColourKey5State("Red");}
+      if(setAnalysis.growthRate > 0.1){setColourKey5State("Orange");}
+      else{setColourKey5State("Brown");}
     }
     
-    if(props.userData.pegRatio < 1){setColourKey6State("Green");}
+    if(props.userData.pegRatio < 1){setColourKey6State("Lime");}
     else{
       if(props.userData.pegRatio <= 1.5){setColourKey6State("Orange");}
-      if(props.userData.pegRatio > 1.5){setColourKey6State("Red");}
+      if(props.userData.pegRatio > 1.5){setColourKey6State("Brown");}
       
     }
-    if(props.userData.pegRatio < 0){setColourKey6State("Red");}
-    if(props.userData.pegRatio === 0){setColourKey6State("White");}
-    
-    if(setAnalysis.debtToEquity/100 < 1){setColourKey9State("Green");}
+    if(props.userData.pegRatio < 0){setColourKey6State("Brown");}
+    if(props.userData.pegRatio === 0){setColourKey6State("Grey");}
+
+    if(props.userData.fiveYearAvgDividendYield > 2){setColourKey7State("Lime");}
     else{
-      if(setAnalysis.debtToEquity/100 <= 2.0){setColourKey9State("Orange");}
-      if(setAnalysis.debtToEquity/100 > 2.0){setColourKey9State("Red");}
+      if(props.userData.fiveYearAvgDividendYield >= 1){setColourKey7State("Orange");}
+      if(props.userData.fiveYearAvgDividendYield < 1){setColourKey7State("Brown");}
       
     }
-    if(setAnalysis.debtToEquity/100 < 0){setColourKey9State("Red");}
-    if(setAnalysis.debtToEquity/100 === 0){setColourKey9State("White");}
-    console.log("ColoursUpdated")
+    if(props.userData.fiveYearAvgDividendYield === 0){setColourKey7State("Grey");}
+    
+    if(setAnalysis.debtToEquity/100 < 0.75){setColourKey9State("Lime");}
+    else{
+      if(setAnalysis.debtToEquity/100 <= 1.0){setColourKey9State("Orange");}
+      if(setAnalysis.debtToEquity/100 > 1.0){setColourKey9State("Brown");}
+      
+    }
+    if(setAnalysis.debtToEquity/100 < 0){setColourKey9State("Brown");}
+    if(setAnalysis.debtToEquity/100 === 0){setColourKey9State("Grey");}
+    
+    if(setAnalysis.returnOnEquity >= 0.2){setColourKey10State("Lime");}
+    else{
+      if(setAnalysis.returnOnEquity >= 0.1){setColourKey10State("Orange");}
+      else{setColourKey10State("Brown");} 
+    }
+    if(setAnalysis.returnOnEquity === 0){setColourKey10State("Grey");}
   }
 
   return (
@@ -156,27 +171,25 @@ function Accordion(props) {
             </div></td>
 
             <td><div><h3>KEY INDICATORS: </h3></div>
-              <div style={{color: `${setColourKey1}`}}><h4>   Quarterly Revenue Growth (YoY)[gt 25%]: {parseFloat(props.userData.revenueQuarterlyGrowth*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey2}`}}><h4>   Quarterly Earnings Growth (YoY)[gt 0.25%]: {parseFloat(props.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey3}`}}><h4>   Price to Earnings (TTM)[lt 20]: {parseFloat(props.userData.trailingPE).toPrecision(4)} </h4></div>
-              <div style={{color: `${setColourKey4}`}}><h4>   Returns Over Five Years: {props.userData.fiveYearAverageReturn} </h4></div>
-              <div style={{color: `${setColourKey5}`}}><h4> (Growth) Predicted Growth in 5 Years[gt 20%] {parseFloat(props.userData.fiftytwoWeekChange*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey6}`}}><h4>   (Growth) Price / Earnings / Growth (P/E/G)[gt 1]: {props.userData.pegRatio} </h4></div>
-              <div style={{color: `${setColourKey7}`}}><h4> Dividend Consistency </h4></div>
-              <div style={{color: `${setColourKey8}`}}><h4> Chart of Last 5yrs Earnings </h4></div>
-              <div style={{color: `${setColourKey9}`}}><h4>  (Management) Debt to Equity Ratio[lt 1]: {parseFloat(setAnalysis.debtToEquity/100).toPrecision(4)} </h4></div>
-              <div style={{color: `${setColourKey10}`}}><h4>  (Management) Return on Equity[gt 20%]: {parseFloat(setAnalysis.returnOnEquity*100).toPrecision(4)}% </h4></div>
-              <div style={{color: `${setColourKey11}`}}><h4> Earnings Per Share (Last 5 Years): <br/> {} <br/> {} <br/> {} <br/> {} </h4></div>
+              <div style={{color: `${setColourKey2}`}}><h3> (Value) Quarterly Earnings Growth (YoY): {parseFloat(props.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h3></div>
+              <div style={{color: `${setColourKey3}`}}><h3> (Value) Price to Earnings (TTM): {parseFloat(props.userData.trailingPE).toPrecision(4)} </h3></div>
+              <div style={{color: `${setColourKey5}`}}><h3> (Growth) Predicted Growth in 5 Years: {parseFloat(setAnalysis.growthRate*100).toPrecision(4)}% </h3></div>
+              <div style={{color: `${setColourKey6}`}}><h3> (Growth) Price / Earnings / Growth (P/E/G): {props.userData.pegRatio} </h3></div>
+              <div style={{color: `${setColourKey7}`}}><h3> (Management) Five Year Ave Dividend Yeild: {props.userData.fiveYearAvgDividendYield}% </h3></div>
+              <div style={{color: `${setColourKey9}`}}><h3> (Management) Debt to Equity Ratio: {parseFloat(setAnalysis.debtToEquity/100).toPrecision(4)} </h3></div>
+              <div style={{color: `${setColourKey10}`}}><h3> (Management) Return on Equity: {parseFloat(setAnalysis.returnOnEquity*100).toPrecision(4)}% </h3></div>
+              <div style={{color: `${setColourKey11}`}}><h3> (Management) Earnings Per Share <br/> Forward EPS: {props.userData.forwardEps} <br/> Trailing EPS: {props.userData.trailingEps} </h3></div>
+              <div style={{color: `${setColourKey8}`}}><h3> <br/>Last 5yrs Earnings: </h3></div>
                             
-              <div style={{color: `${setColourKey12}`}}><h4><br/> Approximated Fair Price (Based on Growth Rate): </h4></div>
-              <div style={{color: `${setColourKey13}`}}><h4><br/> Approximated Fair Price at 30% CI (Based on Growth Rate): </h4></div>
+              <div style={{color: `${setColourKey12}`}}><h3><br/> Approximated Fair Price (Based on Growth Rate): </h3></div>
+              <div style={{color: `${setColourKey13}`}}><h3><br/> Approximated Fair Price at 30% CI (Based on Growth Rate): </h3></div>
               
-              <div style={{color: `${setColourKey14}`}}><h4><br/> Calculated Stoploss on current stock price </h4></div>
-              <div style={{color: "white"}}><h4><br/> Recommendation Trends: </h4></div>
-              <div style={{color: "white"}}><h4> Period: {setAnalysis.rec0mperiod} Strong Buy: {setAnalysis.rec0mstrongbuy} Buy: {setAnalysis.rec0mbuy} Hold: {setAnalysis.rec0mhold} Sell: {setAnalysis.rec0msell} StrongSell: {setAnalysis.rec0mstrongsell}</h4></div>
-              <div style={{color: "white"}}><h4> Period: {setAnalysis.rec1mperiod} Strong Buy: {setAnalysis.rec1mstrongbuy} Buy: {setAnalysis.rec1mbuy} Hold: {setAnalysis.rec1mhold} Sell: {setAnalysis.rec1msell} StrongSell: {setAnalysis.rec1mstrongsell}</h4></div>
-              <div style={{color: "white"}}><h4> Period: {setAnalysis.rec2mperiod} Strong Buy: {setAnalysis.rec2mstrongbuy} Buy: {setAnalysis.rec2mbuy} Hold: {setAnalysis.rec2mhold} Sell: {setAnalysis.rec2msell} StrongSell: {setAnalysis.rec2mstrongsell}</h4></div>
-              <div style={{color: "white"}}><h4> Period: {setAnalysis.rec3mperiod} Strong Buy: {setAnalysis.rec3mstrongbuy} Buy: {setAnalysis.rec3mbuy} Hold: {setAnalysis.rec3mhold} Sell: {setAnalysis.rec3msell} StrongSell: {setAnalysis.rec3mstrongsell}</h4></div>
+              <div style={{color: `${setColourKey14}`}}><h3><br/> Calculated 8% Stoploss on Current Price: {parseFloat((props.userData.regularMarketPrice/100)*92).toPrecision(4)} </h3></div>
+              <div style={{color: "Grey"}}><h3><br/> Recommendation Trends, by Month: </h3></div>
+              <div style={{color: "Grey"}}><h3> Period {setAnalysis.rec0mperiod} <br/> Strong Buy: {setAnalysis.rec0mstrongbuy} Buy: {setAnalysis.rec0mbuy} Hold: {setAnalysis.rec0mhold} Sell: {setAnalysis.rec0msell} StrongSell: {setAnalysis.rec0mstrongsell}</h3></div>
+              <div style={{color: "Grey"}}><h3> Period {setAnalysis.rec1mperiod} <br/> Strong Buy: {setAnalysis.rec1mstrongbuy} Buy: {setAnalysis.rec1mbuy} Hold: {setAnalysis.rec1mhold} Sell: {setAnalysis.rec1msell} StrongSell: {setAnalysis.rec1mstrongsell}</h3></div>
+              <div style={{color: "Grey"}}><h3> Period {setAnalysis.rec2mperiod} <br/> Strong Buy: {setAnalysis.rec2mstrongbuy} Buy: {setAnalysis.rec2mbuy} Hold: {setAnalysis.rec2mhold} Sell: {setAnalysis.rec2msell} StrongSell: {setAnalysis.rec2mstrongsell}</h3></div>
+              <div style={{color: "Grey"}}><h3> Period {setAnalysis.rec3mperiod} <br/> Strong Buy: {setAnalysis.rec3mstrongbuy} Buy: {setAnalysis.rec3mbuy} Hold: {setAnalysis.rec3mhold} Sell: {setAnalysis.rec3msell} StrongSell: {setAnalysis.rec3mstrongsell}</h3></div>
               
             </td>
           </tr>

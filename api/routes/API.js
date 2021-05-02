@@ -9,7 +9,7 @@ router.get("/*", function(req, res, next) {
     // Some Input Validation
     var regex = new RegExp("^[a-zA-Z.]+$");
     if(!regex.test(reqtracker)){
-        res.send(JSON.parse("{ \"longName\": \"Failed Input Validation\" }"));
+        res.send(JSON.parse("{ \"longName\": \"Failed Input Validation, Check the Tracker Requested\" }"));
     }
     else{
         const { spawn } = require('child_process');
