@@ -15,3 +15,5 @@ FEATURES TO ADD:
     - Rank and Sort the Accordian items by Selected Indicator
     - Search tracker page which creates an accordian item by added tracker (single and multiple)
     - Fix up the Indicators in the accordion component
+
+https://www.youtube.com/watch?v=ICiwzpQDGCI&list=WL&index=33
