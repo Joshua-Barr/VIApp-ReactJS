@@ -9,7 +9,6 @@ function Accordion(props) {
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("accordion__icon");
   
-  const [setColourKey1, setColourKey1State] = useState("Grey")
   const [setColourKey2, setColourKey2State] = useState("Grey")
   const [setColourKey3, setColourKey3State] = useState("Grey")
   const [setColourKey4, setColourKey4State] = useState("Grey")
@@ -23,6 +22,7 @@ function Accordion(props) {
   const [setColourKey12, setColourKey12State] = useState("Grey")
   const [setColourKey13, setColourKey13State] = useState("Grey")
   const [setColourKey14, setColourKey14State] = useState("Grey")
+  const [setColourKey15, setColourKey15State] = useState("Grey")
 
   const content = useRef(null);
   const table = "table";
@@ -80,12 +80,6 @@ function Accordion(props) {
           })
         }
       }
-    }
-
-    if(props.userData.revenueQuarterlyGrowth > 0.25){setColourKey1State("Lime");}
-    else{
-      if(props.userData.revenueQuarterlyGrowth > 0.1){setColourKey1State("Orange");}
-      else{setColourKey1State("Brown");}
     }
 
     if(props.userData.earningsQuarterlyGrowth > 0.25){setColourKey2State("Lime");}
@@ -172,19 +166,21 @@ function Accordion(props) {
 
             <td><div><h3>KEY INDICATORS: </h3></div>
               <div style={{color: `${setColourKey2}`}}><h3> (Value) Quarterly Earnings Growth (YoY): {parseFloat(props.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h3></div>
-              <div style={{color: `${setColourKey3}`}}><h3> (Value) Price to Earnings (TTM): {parseFloat(props.userData.trailingPE).toPrecision(4)} </h3></div>
               <div style={{color: `${setColourKey5}`}}><h3> (Growth) Predicted Growth in 5 Years: {parseFloat(setAnalysis.growthRate*100).toPrecision(4)}% </h3></div>
               <div style={{color: `${setColourKey6}`}}><h3> (Growth) Price / Earnings / Growth (P/E/G): {props.userData.pegRatio} </h3></div>
               <div style={{color: `${setColourKey7}`}}><h3> (Management) Five Year Ave Dividend Yeild: {props.userData.fiveYearAvgDividendYield}% </h3></div>
               <div style={{color: `${setColourKey9}`}}><h3> (Management) Debt to Equity Ratio: {parseFloat(setAnalysis.debtToEquity/100).toPrecision(4)} </h3></div>
               <div style={{color: `${setColourKey10}`}}><h3> (Management) Return on Equity: {parseFloat(setAnalysis.returnOnEquity*100).toPrecision(4)}% </h3></div>
               <div style={{color: `${setColourKey11}`}}><h3> (Management) Earnings Per Share <br/> Forward EPS: {props.userData.forwardEps} <br/> Trailing EPS: {props.userData.trailingEps} </h3></div>
+              <div style={{color: `${setColourKey3}`}}><h3> (Value) Price to Earnings <br/> Forward PE: {parseFloat(props.userData.forwardPE).toPrecision(4)} <br/> Trailing PE: {parseFloat(props.userData.trailingPE).toPrecision(4)} </h3></div>
               <div style={{color: `${setColourKey8}`}}><h3> <br/>Last 5yrs Earnings: </h3></div>
-                            
-              <div style={{color: `${setColourKey12}`}}><h3><br/> Approximated Fair Price (Based on Growth Rate): </h3></div>
-              <div style={{color: `${setColourKey13}`}}><h3><br/> Approximated Fair Price at 30% CI (Based on Growth Rate): </h3></div>
+
+              <div style={{color: `${setColourKey12}`}}><h3><br/> Calculated Fair Price (Based on Growth Rate): {parseFloat(((1+(setAnalysis.growthRate))** 5) * ((props.userData.forwardEps + props.userData.trailingEps)/2) * ((props.userData.forwardPE + props.userData.trailingPE)/2)).toPrecision(4)}</h3></div>
+
+              <div style={{color: `${setColourKey13}`}}><h3> Calculated Fair Price at 30% CI (Based on Growth Rate): {parseFloat((((1+(setAnalysis.growthRate))** 5) * ((props.userData.forwardEps + props.userData.trailingEps)/2) * ((props.userData.forwardPE + props.userData.trailingPE)/2))*0.7).toPrecision(4)}</h3></div>
+              <div style={{color: `${setColourKey14}`}}><h3> Calculated Fair Price at 50% CI (Based on Growth Rate): {parseFloat((((1+(setAnalysis.growthRate))** 5) * ((props.userData.forwardEps + props.userData.trailingEps)/2) * ((props.userData.forwardPE + props.userData.trailingPE)/2))*0.5).toPrecision(4)}</h3></div>
               
-              <div style={{color: `${setColourKey14}`}}><h3><br/> Calculated 8% Stoploss on Current Price: {parseFloat((props.userData.regularMarketPrice/100)*92).toPrecision(4)} </h3></div>
+              <div style={{color: `${setColourKey15}`}}><h3><br/> Calculated 8% Stoploss on Current Price: {parseFloat((props.userData.regularMarketPrice/100)*92).toPrecision(4)} </h3></div>
               <div style={{color: "Grey"}}><h3><br/> Recommendation Trends, by Month: </h3></div>
               <div style={{color: "Grey"}}><h3> Period {setAnalysis.rec0mperiod} <br/> Strong Buy: {setAnalysis.rec0mstrongbuy} Buy: {setAnalysis.rec0mbuy} Hold: {setAnalysis.rec0mhold} Sell: {setAnalysis.rec0msell} StrongSell: {setAnalysis.rec0mstrongsell}</h3></div>
               <div style={{color: "Grey"}}><h3> Period {setAnalysis.rec1mperiod} <br/> Strong Buy: {setAnalysis.rec1mstrongbuy} Buy: {setAnalysis.rec1mbuy} Hold: {setAnalysis.rec1mhold} Sell: {setAnalysis.rec1msell} StrongSell: {setAnalysis.rec1mstrongsell}</h3></div>
