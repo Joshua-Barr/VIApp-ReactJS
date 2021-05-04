@@ -59,6 +59,13 @@ a.link {
   width: 15px;
 }
 
+.contacttext{
+  padding: 3%;
+  font-family: 'Open Sans';
+  font-size: 24px;
+  color: darkorange;
+}
+
 .searchtext{
   padding: 3%;
   font-family: 'Open Sans';

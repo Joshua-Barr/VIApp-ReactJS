@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 
-var testAPIRouter = require('./routes/API')
+var API = require('./routes/API')
+var Sort = require('./routes/Sort')
 
 var app = express();
 
@@ -22,7 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // DO SOME VALIDATION AND SANITIZING!!!!!!!!!
 
-app.use("/API", testAPIRouter);
+app.use("/API", API);
+app.use("/Sort", Sort);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

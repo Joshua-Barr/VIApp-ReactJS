@@ -9,6 +9,7 @@ import FTSE100 from "./pages/FTSE100"
 import FTSE250 from "./pages/FTSE250"
 import NIKKEI225 from "./pages/Nikkei225"
 import Search from "./pages/Search"
+import Contact from "./pages/Contact"
 import BurgerMenu from "./pages/Menu";
 
 import "./styles.css";
@@ -33,6 +34,7 @@ export default function App() {
               <Route path="/ftse250" component={FTSE250} />
               <Route path="/nikkei225" component={NIKKEI225} />
               <Route path="/search" component={Search} />
+              <Route path="/contact" component={Contact} />
             </Switch>
         </div>
       </div>
