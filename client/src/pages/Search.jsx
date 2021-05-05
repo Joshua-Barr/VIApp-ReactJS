@@ -1,6 +1,7 @@
 import React from "react"
 
 import Sharesdisplay from "../components/Sharesdisplay";
+import ShareSort from "../components/SharesSort";
 
 import "../styles.css"
 
@@ -16,7 +17,8 @@ export default function Search() {
   const runSearch = event => {
     var regex = new RegExp("^[a-zA-Z.]+$");
     if(!regex.test(event.target.value)){
-      setDisplayItem(searchTerm.split(",").map((Symbol) => <Sharesdisplay Symbol={Symbol} />))
+      //setDisplayItem(searchTerm.split(",").map((Symbol) => <ShareSort Symbols={Symbol} />))
+      setDisplayItem(<ShareSort Symbols={searchTerm} />)
     }
   }
   

@@ -1,10 +1,12 @@
 var express = require("express");
 var router = express.Router();
-var formattedJSON = "JSON";
-var count = 0;
-var stocksandData = []
 
 router.get("/*", function(req, res, next) {
+
+    var formattedJSON = "JSON";
+    var i = 0;
+    var costRatio = 0;
+    var stocksandData = []
     
     reqparams = router.stack
     reqtracker = (reqparams[0].path.toString().split('/'))[1].split(',')
@@ -12,57 +14,52 @@ router.get("/*", function(req, res, next) {
     reqtracker.map((Symbol, count) => {
         const { spawn } = require('child_process');
         const pyprog = spawn('python', ['../yfinance/yfinance.py', Symbol]);
-        
-        console.log(Symbol)
-        console.log(count)
 
         pyprog.stdout.on('data', function(data) {
             formattedJSON = (data.toString().replace(/{'/g, '{\"').replace(/\\/g, '.').replace(/'}/g, '\"}').replace(/': '/g, '\": \"').replace(/', '/g, '\", \"').replace(/':/g, '\":').replace(/, '/g, ', \"').replace(/None/g, '0').replace(/False/g, '0').replace(/True/g, '1').replace(/52Week/g, 'fiftytwoWeek').replace(/\"}\s/g, '\",'));
-            
-            console.log(formattedJSON)
 
             if (/^[\],:{}\s]*$/.test(formattedJSON.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
                 try{
-                    stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": formattedJSON})
-                    console.log("tried")
+                    if(typeof JSON.parse(formattedJSON).analysis !== "undefined"){
+                        costRatio = (((((1+(JSON.parse(formattedJSON).analysis.earningsTrend.trend[4].growth))** 5) * JSON.parse(formattedJSON).forwardEps * JSON.parse(formattedJSON).forwardPE)*0.5)/JSON.parse(formattedJSON).regularMarketPrice)
+                    }
+                    stocksandData.push({"tracker": Symbol, "percentageDiff": costRatio,"data": formattedJSON})
                 }
                 catch{
                     stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": "{ \"longName\": \"Failed to Parse JSON String\" }"})
                     console.log("catched")
                 }
+                i++
             }
             else{
                 stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": "{ \"longName\": \"Failed Input Validation, Check the Tracker Requested\" }"})
+                i++
             }
+            
 
-            if((reqtracker.length - 1) === count){
-                res.send(stocksandData)
+            // Return the array
+            if(reqtracker.length === i){
+                sortedData = stocksandData.sort(compare);
+                res.send(sortedData)
             }
         });
     });
-
-    //Sort the array
-
-
-    //Return the array
-
 });
 
 module.exports = router;
 
 
-function insertionSort(inputArr) {
-    let n = inputArr.length;
-        for (let i = 1; i < n; i++) {
-            // Choosing the first element in our unsorted subarray
-            let current = inputArr[i];
-            // The last element of our sorted subarray
-            let j = i-1; 
-            while ((j > -1) && (current < inputArr[j])) {
-                inputArr[j+1] = inputArr[j];
-                j--;
-            }
-            inputArr[j+1] = current;
-        }
-    return inputArr;
+//Comparison function for sorting the array
+function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const diffA = a.percentageDiff
+    const diffB = b.percentageDiff
+  
+    let comparison = 0;
+    if (diffA > diffB) {
+        comparison = 1;
+    } else if (diffA < diffB) {
+        comparison = -1;
+    }
+    return comparison;
 }
