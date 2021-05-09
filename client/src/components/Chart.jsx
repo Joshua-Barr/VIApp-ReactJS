@@ -15,13 +15,53 @@ export default class Graph extends Component {
                 labels: this.props.periods,
                 datasets: [
                     {
-                        label: this.props.label,
-                        data: this.props.data,
-                    }
+                        label: this.props.labelSBuy,
+                        data: this.props.dataSBuy,
+                        backgroundColor: 'rgba(0, 255, 0, 1)',
+                        borderColor: [
+                            'rgba(255, 255, 255, 1)',
+                        ],
+                        borderWidth: 3
+                    },
+                    {
+                        label: this.props.labelBuy,
+                        data: this.props.dataBuy,
+                        backgroundColor: 'rgba(100, 220, 20, 1)',
+                        borderColor: [
+                            'rgba(255, 255, 255, 1)',
+                        ],
+                        borderWidth: 3
+                    },
+                    {
+                        label: this.props.labelHold,
+                        data: this.props.dataHold,
+                        backgroundColor: 'rgba(170, 170, 0, 1)',
+                        borderColor: [
+                            'rgba(255, 255, 255, 1)',
+                        ],
+                        borderWidth: 3
+                    },
+                    {
+                        label: this.props.labelSell,
+                        data: this.props.dataSell,
+                        backgroundColor: 'rgba(220, 100, 0, 1)',
+                        borderColor: [
+                            'rgba(255, 255, 255, 1)',
+                        ],
+                        borderWidth: 3
+                    },
+                    {
+                        label: this.props.labelSSell,
+                        data: this.props.dataSSell,
+                        backgroundColor: 'rgba(255, 0, 0, 1)',
+                        borderColor: [
+                            'rgba(255, 255, 255, 1)',
+                        ],
+                        borderWidth: 3
+                    },
                 ]
             },
             options: {
-                
             }
         });
     }
