@@ -12,6 +12,7 @@ function Sharesdisplay(props) {
   useEffect(() => {
     
     getStockFetch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getStockFetch = async () => {

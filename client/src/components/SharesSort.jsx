@@ -5,13 +5,14 @@ import "../styles.css";
 
 function ShareSort(props) {
   const [userAccordion, setAccordion] = useState('');
-  const [isLoaded, setLoaded] = useState(true);
+  const [isLoaded] = useState(true);
 
   const stockUrl = "http://localhost:9000/Sort/" + props.Symbols;
   
   useEffect(() => {
     
     getStockFetch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getStockFetch = async () => {
