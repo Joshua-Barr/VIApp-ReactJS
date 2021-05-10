@@ -5,6 +5,7 @@ import "../styles.css";
 
 function Sharesdisplay(props) {
   const [userData, setUserData] = useState({});
+  const [isLoaded, setLoaded] = useState(false);
 
   const stockUrl = "http://localhost:9000/api/" + props.Symbol;
   
@@ -16,7 +17,7 @@ function Sharesdisplay(props) {
   const getStockFetch = async () => {
     
     const response = await fetch(stockUrl);
-    const jsonData = await response.json();
+    const jsonData = await response.json().then(setLoaded(true));
     setUserData(jsonData);
   };
 
@@ -26,6 +27,7 @@ function Sharesdisplay(props) {
         <AccordionApp 
           userData={userData}
           tracker={props.Symbol}
+          isLoaded={isLoaded}
           />
         </div>
       </div>

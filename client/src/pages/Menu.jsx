@@ -11,8 +11,8 @@ class BurgerMenu extends React.Component {
 
     render () {
         return (
-            <Menu>
-                <a id="home" className="menu-item" href="/"><h1>Menu</h1></a>
+            <Menu width={ '260px' }>
+                <a id="home" className="menu-item" href="/"><h1>HOME</h1></a>
                 <h2>Australian :</h2>
                 <a id="asx 100" className="menu-item" href="/asx100">ASX 100</a>
                 <a id="aus etfs" className="menu-item" href="/asxetfs">AUS ETF's</a>

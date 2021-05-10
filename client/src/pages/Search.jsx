@@ -23,14 +23,14 @@ export default function Search() {
   return (
     <div className="App">
       <div class={"searchtext"}>Search for any stock below using its "Yahoo" friendly tracker: </div>
-      <div style={{color: "Grey"}}><h6>To Search Multiple Trackers Separate with Comma's (e.g. WES.AX,CBA.AX)</h6></div>
-      <input
+      <div style={{color: "Grey"}}><h6>To Search Multiple Trackers Separate with Comma's (e.g. WES.AX,CBA.AX)</h6><br/></div>
+      <input class={"searchinput"}
         type="text"
         placeholder="Search"
         value={searchTerm}
         onChange={handleChange}
       />
-      <button class={"searchbutton"}type={"button"}  onClick={runSearch} />
+      <button class={"searchbutton"} type={"button"}  onClick={runSearch}/>
       <ul>
         <li>{displayItem}</li>
       </ul>

@@ -33,6 +33,7 @@ class AccordionApp extends React.Component {
         <Accordion
           userData={this.props.userData}
           tracker={this.props.tracker}
+          isLoaded={this.props.isLoaded}
         />
       </div>
     );

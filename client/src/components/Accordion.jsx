@@ -9,12 +9,9 @@ function Accordion(props) {
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("accordion__icon");
 
-  const [userAccordion, setAccordion] = useState('');
-
   const content = useRef(null);
 
   function toggleAccordion() {
-    setAccordion("active" ? <Display data={props}/> : "")
     setActiveState(setActive === "" ? "active" : "");
     setHeightState(
       setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
@@ -22,23 +19,22 @@ function Accordion(props) {
     setRotateState(
       setActive === "active" ? "accordion__icon" : "accordion__icon rotate"
     );
-    
   }
 
-  return (
-    <div className="accordion__section">
-      <button className={`accordion ${setActive}`} onClick={toggleAccordion}>
-        <p className="accordion__title">{props.tracker}: {props.userData.longName}</p>
-        <Chevron className={`${setRotate}`} width={10} fill={"#665"} />
-      </button>
-      <div
-        ref={content}
-        style={{ maxHeight: `${setHeight}` }}
-        className="accordion__content"
-      >
-        {userAccordion}
+    return (
+      <div className="accordion__section">
+        <button className={`accordion ${setActive}`} onClick={toggleAccordion}>
+          <p className="accordion__title">{props.tracker}: {props.userData.longName}</p>
+          <Chevron className={`${setRotate}`} width={10} fill={"#665"} />
+        </button>
+        <div
+          ref={content}
+          style={{ maxHeight: `${setHeight}` }}
+          className="accordion__content"
+        >
+          <Display data={props}/>
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 export default Accordion;

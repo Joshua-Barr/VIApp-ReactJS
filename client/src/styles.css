@@ -12,6 +12,21 @@ header {
   font-size: 22px;
 }
 
+.Title {
+  font-size: 2.8rem;
+}
+
+.h1, h1 {
+  font-size: 1.5rem;
+}
+
+.h3, h3 {
+  font-size: 1rem;
+  font-family: 'Open Sans';
+  margin-bottom: auto;
+  font-weight: 700;
+}
+
 table{
   margin-left: auto;
   margin-right: auto;
@@ -35,7 +50,7 @@ a.link {
 }
 
 canvas#myChart {
-  padding-right: 20%;
+  padding: 3%;
 }
 
 .App {
@@ -58,9 +73,16 @@ canvas#myChart {
 
 .pagehead h1{font-size:40px}
 
-.searchbutton{
-  height: 15px;
-  width: 15px;
+.searchbutton {
+  height: 20px;
+  width: 22px;
+  background-color: dimgray;
+}
+
+input.searchinput {
+  width: 50%;
+  height: 30px;
+  font-size: 24px;
 }
 
 .contacttext{
@@ -97,7 +119,7 @@ canvas#myChart {
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap");
 
 .info {
-  text-align: justify;
+  text-align: center;
   padding: 10px;
   font-weight: bolder;
   color: floralwhite;
@@ -141,6 +163,7 @@ canvas#myChart {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 24px;
+  height: 17px;
 }
 
 /* Style the accordion chevron icon */
@@ -164,9 +187,10 @@ canvas#myChart {
 
 /* Style the accordion content text */
 .accordion__text {
+  padding-top: 5px;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 11px;
+  font-size: 12px;
   padding: 9px;
 }
 
@@ -278,9 +302,9 @@ Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
 */
 .bm-menu-wrap {
-  position: absolute;
+  position: fixed;
   height: 100%;
-  top: 14%;
+  top: 0.2%;
 }
 
 /* General sidebar styles */
@@ -294,8 +318,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 a {
   color: #ababab;
   text-decoration: inherit;
-  padding-top: 2%;
   font-size: 18px;
+  font-family: 'Open Sans';
+  font-weight: bold;
 }
 
 a#home {
@@ -324,8 +349,7 @@ h1.bm-item {
 
 h2.bm-item {
   font-size: 18px;
-  padding-top: 3%;
-  padding-bottom: 1%;
+  padding-top: 6%;
   color: white;
 }
 

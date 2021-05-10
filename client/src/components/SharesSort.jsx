@@ -5,6 +5,7 @@ import "../styles.css";
 
 function ShareSort(props) {
   const [userAccordion, setAccordion] = useState('');
+  const [isLoaded, setLoaded] = useState(false);
 
   const stockUrl = "http://localhost:9000/Sort/" + props.Symbols;
   
@@ -15,11 +16,13 @@ function ShareSort(props) {
 
   const getStockFetch = async () => {
     
+    
     const response = await fetch(stockUrl);
-    const jsonData = await response.json();
-    setAccordion(await jsonData.reverse().map((item) => <AccordionApp tracker={item.tracker} userData={item.data} />))
-  };
+    const jsonData = await response.json().then(setLoaded(true)); 
 
+    setAccordion(await jsonData.reverse().map((item) => <AccordionApp tracker={item.tracker} userData={item.data} isLoaded={isLoaded}/>))
+  };
+  
   return (
       <div className="App">
         <div className="user-container">
