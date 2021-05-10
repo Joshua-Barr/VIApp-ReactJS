@@ -34,6 +34,10 @@ a.link {
   color: steelblue;
 }
 
+canvas#myChart {
+  padding-right: 20%;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -162,8 +166,8 @@ a.link {
 .accordion__text {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  padding: 12px;
+  font-size: 11px;
+  padding: 9px;
 }
 
 /*-----------------------------------------------------Header CSS */

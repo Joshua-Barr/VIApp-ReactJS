@@ -9,9 +9,12 @@ function Accordion(props) {
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("accordion__icon");
 
+  const [userAccordion, setAccordion] = useState('');
+
   const content = useRef(null);
 
   function toggleAccordion() {
+    setAccordion("active" ? <Display data={props}/> : "")
     setActiveState(setActive === "" ? "active" : "");
     setHeightState(
       setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
@@ -19,6 +22,7 @@ function Accordion(props) {
     setRotateState(
       setActive === "active" ? "accordion__icon" : "accordion__icon rotate"
     );
+    
   }
 
   return (
@@ -32,7 +36,7 @@ function Accordion(props) {
         style={{ maxHeight: `${setHeight}` }}
         className="accordion__content"
       >
-        <Display data={props}/>
+        {userAccordion}
       </div>
     </div>
   );

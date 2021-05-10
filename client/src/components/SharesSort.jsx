@@ -17,7 +17,7 @@ function ShareSort(props) {
     
     const response = await fetch(stockUrl);
     const jsonData = await response.json();
-    setAccordion(await jsonData.reverse().map((item) => <AccordionApp tracker={item.tracker} userData={JSON.parse(item.data)} />))
+    setAccordion(await jsonData.reverse().map((item) => <AccordionApp tracker={item.tracker} userData={item.data} />))
   };
 
   return (

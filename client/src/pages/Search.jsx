@@ -1,6 +1,4 @@
 import React from "react"
-
-import Sharesdisplay from "../components/Sharesdisplay";
 import ShareSort from "../components/SharesSort";
 
 import "../styles.css"
