@@ -7,6 +7,7 @@ var cors = require("cors");
 
 var API = require('./routes/API')
 var Sort = require('./routes/Sort')
+var Schedule = require('./routes/Schedule')
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/API", API);
 app.use("/Sort", Sort);
+app.use("/Schedule", Schedule)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

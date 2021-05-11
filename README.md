@@ -17,3 +17,7 @@ FEATURES TO ADD:
     - Fix up the Indicators in the accordion component
 
 https://www.youtube.com/watch?v=ICiwzpQDGCI&list=WL&index=33
+
+Run npm install or ci under the client and api folders
+Install yfinance from python3 pip
+Setup a local MongoDB instance
