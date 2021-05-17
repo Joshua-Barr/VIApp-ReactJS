@@ -2,6 +2,7 @@ import React from "react";
 
 import Graph from "./Chart"
 
+
 import "../styles.css";
 
 class Display extends React.Component {
@@ -44,7 +45,7 @@ class Display extends React.Component {
   }
 
   render() {
-      if(this.props.data.isLoaded === false){
+      if(!this.props.data.isLoaded){
         return (
             <div className="spinner">
                 <div class="spinner-border" role="status">
