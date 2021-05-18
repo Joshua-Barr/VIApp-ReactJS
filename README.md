@@ -21,3 +21,21 @@ https://www.youtube.com/watch?v=ICiwzpQDGCI&list=WL&index=33
 Run npm install or ci under the client and api folders
 Install yfinance from python3 pip
 Setup a local MongoDB instance
+
+sudo apt update
+sudo apt install python3-pip
+sudo apt install unzip
+wget https://github.com/Shortlived/VIApp-ReactJS/archive/refs/heads/main.zip
+unzip main.zip
+sudo python3 pip install yfinance
+nano VIApp-ReactJS/client/src/components/Sharesdisplay.jsx
+nano VIApp-ReactJS/client/src/components/SharesSort.jsx
+nano VIApp-ReactJS/api/routes/Schedule.jsx
+
+cd client
+npm install
+
+cd api
+npm install
+
+crontab -e
