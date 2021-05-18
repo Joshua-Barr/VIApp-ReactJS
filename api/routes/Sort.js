@@ -1,104 +1,61 @@
 var express = require("express");
 var router = express.Router();
+var database = "VI-APP";
+var collection = "scraped";
 
 router.get("/*", function(req, res, next) {
-
-    var formattedJSON = "JSON";
-    var i = 0;
-    var costRatio = 0;
-    var stocksandData = []
-    
     reqparams = router.stack
-    reqtracker = (reqparams[0].path.toString().split('/'))[1].split(',')
-    //Build the array
-    reqtracker.map((Symbol, count) => {
-        const { spawn } = require('child_process');
-        const pyprog = spawn('python', ['../yfinance/yfinance.py', Symbol]);
+    reqtrackers = (reqparams[0].path.toString().split('/'))[1].split(',')
 
-        pyprog.stdout.on('data', function(data) {
-            formattedJSON = (data.toString().replace(/{'/g, '{\"').replace(/\\/g, '.').replace(/'}/g, '\"}').replace(/': '/g, '\": \"').replace(/', '/g, '\", \"').replace(/':/g, '\":').replace(/, '/g, ', \"').replace(/None/g, '0').replace(/False/g, '0').replace(/True/g, '1').replace(/52Week/g, 'fiftytwoWeek').replace(/\"}\s/g, '\",'));
-
-            if (/^[\],:{}\s]*$/.test(formattedJSON.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
-                try{
-                    if(typeof JSON.parse(formattedJSON).analysis !== "undefined"){
-                        costRatio = (((((1+(JSON.parse(formattedJSON).analysis.earningsTrend.trend[4].growth))** 5) * JSON.parse(formattedJSON).forwardEps * JSON.parse(formattedJSON).forwardPE)*0.5)/JSON.parse(formattedJSON).regularMarketPrice)
-                        dataObject = JSON.parse(formattedJSON)
-                        dataObject = {
-                            earningsQuarterlyGrowth: dataObject.earningsQuarterlyGrowth,
-                            fiveYearAvgDividendYield: dataObject.fiveYearAvgDividendYield,
-                            longBusinessSummary: dataObject.longBusinessSummary,
-                            longName: dataObject.longName,
-                            trailingPE: dataObject.trailingPE,
-                            forwardPE: dataObject.forwardPE,
-                            pegRatio: dataObject.pegRatio,
-                            trailingEps: dataObject.trailingEps,
-                            forwardEps: dataObject.forwardEps,
-                            logo_url: dataObject.logo_url,
-                            industry: dataObject.industry,
-                            sector: dataObject.sector,
-                            country: dataObject.country,
-                            address: dataObject.address,
-                            state: dataObject.state,
-                            phone: dataObject.phone,
-                            website: dataObject.website,
-                            regularMarketPrice: dataObject.regularMarketPrice,
-                            regularMarketDayHigh: dataObject.regularMarketDayHigh,
-                            open: dataObject.open,
-                            previousClose: dataObject.previousClose,
-                            debtToEquity: dataObject.analysis.financialData.debtToEquity,
-                            returnOnEquity: dataObject.analysis.financialData.returnOnEquity,
-                            growthRate: dataObject.analysis.earningsTrend.trend[4].growth,
-                            rec0mperiod: dataObject.analysis.recommendationTrend.trend[0].period,
-                            rec0mstrongbuy: dataObject.analysis.recommendationTrend.trend[0].strongBuy,
-                            rec0mbuy: dataObject.analysis.recommendationTrend.trend[0].buy,
-                            rec0mhold: dataObject.analysis.recommendationTrend.trend[0].hold,
-                            rec0msell: dataObject.analysis.recommendationTrend.trend[0].sell,
-                            rec0mstrongsell: dataObject.analysis.recommendationTrend.trend[0].sell,
-                            rec1mperiod: dataObject.analysis.recommendationTrend.trend[1].period,
-                            rec1mstrongbuy: dataObject.analysis.recommendationTrend.trend[1].strongBuy,
-                            rec1mbuy: dataObject.analysis.recommendationTrend.trend[1].buy ,
-                            rec1mhold: dataObject.analysis.recommendationTrend.trend[1].hold ,
-                            rec1msell: dataObject.analysis.recommendationTrend.trend[1].sell ,
-                            rec1mstrongsell: dataObject.analysis.recommendationTrend.trend[1].sell ,
-                            rec2mperiod: dataObject.analysis.recommendationTrend.trend[2].period ,
-                            rec2mstrongbuy: dataObject.analysis.recommendationTrend.trend[2].strongBuy ,
-                            rec2mbuy: dataObject.analysis.recommendationTrend.trend[2].buy ,
-                            rec2mhold: dataObject.analysis.recommendationTrend.trend[2].hold ,
-                            rec2msell: dataObject.analysis.recommendationTrend.trend[2].sell ,
-                            rec2mstrongsell: dataObject.analysis.recommendationTrend.trend[2].sell ,
-                            rec3mperiod: dataObject.analysis.recommendationTrend.trend[3].period ,
-                            rec3mstrongbuy: dataObject.analysis.recommendationTrend.trend[3].strongBuy ,
-                            rec3mbuy: dataObject.analysis.recommendationTrend.trend[3].buy ,
-                            rec3mhold: dataObject.analysis.recommendationTrend.trend[3].hold ,
-                            rec3msell: dataObject.analysis.recommendationTrend.trend[3].sell,
-                            rec3mstrongsell: dataObject.analysis.recommendationTrend.trend[3].sell,
-                        }
-                    }
-                    stocksandData.push({"tracker": Symbol, "percentageDiff": costRatio,"data": dataObject})
-                }
-                catch{
-                    stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": "{ \"longName\": \"Failed to Parse JSON String\" }"})
-                    console.log("catched")
-                }
-                i++
-            }
-            else{
-                stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": "{ \"longName\": \"Failed Input Validation, Check the Tracker Requested\" }"})
-                i++
-            }
-            
-
-            // Return the array
-            if(reqtracker.length === i){
-                sortedData = stocksandData.sort(compare);
-                res.send(sortedData)
-            }
-        });
+    GetQuery(reqtrackers, function(err, data) {
+        if(err) throw err;
+        res.send(data);
     });
 });
 
-module.exports = router;
+function GetQuery(reqtrackers, cb) {
+    var i = 0;
+    var costRatio = 0;
+    var stocksandData = []
 
+    //Build the array
+    reqtrackers.map((Symbol, count) => {
+        var regex = new RegExp("^[a-zA-Z0-9.]+$");
+        if(!regex.test(Symbol)){
+            stocksandData.push({"tracker": Symbol, "percentageDiff": 0, "data": { longName: "Failed Input Validation, Check the Tracker Requested" }});
+            i++
+        }
+        else{
+            var MongoClient = require('mongodb').MongoClient;
+            var url = "mongodb://localhost:27017/";
+    
+            MongoClient.connect(url, function(err, db) {
+                var dbo = db.db(database);
+                dbo.collection(collection).findOne({Tracker: Symbol}, function(err, data) {
+                    if(err) throw err;
+                    try{
+                        if(data !== null){
+                            costRatio = (((((1+(data.data.growthRate))** 5) * data.data.forwardEps * data.data.forwardPE)*0.5)/data.data.regularMarketPrice)
+                            stocksandData.push({"tracker": Symbol, "percentageDiff": costRatio, "data": data.data})
+                            i++
+                        }
+                        else{ i++ }
+                    }
+                    catch{
+                        stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": "{ \"longName\": \"Failed to Parse JSON String\" }"})
+                        i++
+                    }
+                
+                    // Return the array
+                    if(reqtrackers.length === i){
+                        sortedData = stocksandData.sort(compare);
+                        cb(err, sortedData)
+                    }
+                });
+            });
+        }
+    });
+}
 
 //Comparison function for sorting the array
 function compare(a, b) {
@@ -114,3 +71,5 @@ function compare(a, b) {
     }
     return comparison;
 }
+
+module.exports = router;

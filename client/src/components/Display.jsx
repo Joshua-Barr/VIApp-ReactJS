@@ -7,7 +7,7 @@ import "../styles.css";
 
 class Display extends React.Component {
 
-  constructor(props){
+    constructor(props){
     super(props);
 
     this.page = {
@@ -34,31 +34,21 @@ class Display extends React.Component {
 
     }
 
-
-  componentDidMount = () => {
-    this.timer = setInterval(() => {
-    },1000)
- };
- 
-  componentWillUnmount() {
-     clearInterval(this.timer);
-  }
-
-  render() {
-      if(!this.props.data.isLoaded){
-        return (
-            <div className="spinner">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
+    render() {
+        if(!this.props.data.isLoaded){
+            return (
+                <div className="spinner">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
                 </div>
-            </div>
-        );
-      }
-      else{
-        return (
-            <div className="accordion__text">
-            <table id={this.page.table}>
-            <tbody>
+            );
+        }
+        else{
+            return (
+                <div className="accordion__text">
+                <table id={this.page.table}>
+                <tbody>
                     <tr>
                         <td>
                             <div class={this.page.info}><img src={this.props.data.userData.logo_url} alt={this.page.logo_text}/><br/>
@@ -71,12 +61,12 @@ class Display extends React.Component {
                             <br/> Sector: {this.props.data.userData.sector}
                             <h3 style={{color: "darkgrey"}}><br/>Price: {this.props.data.userData.regularMarketPrice} | Daily High: {this.props.data.userData.regularMarketDayHigh}</h3>
                             <h3 style={{color: "darkgrey"}}>Last Open: {this.props.data.userData.open} | Last Close: {this.props.data.userData.previousClose}</h3></div><br/>
-                            <Graph periods={[this.props.data.userData.rec0mperiod,this.props.data.userData.rec1mperiod,this.props.data.userData.rec2mperiod,this.props.data.userData.rec3mperiod]} 
-                            dataSBuy={[this.props.data.userData.rec0mstrongbuy,this.props.data.userData.rec1mstrongbuy,this.props.data.userData.rec2mstrongbuy,this.props.data.userData.rec3mstrongbuy]} labelSBuy="StrongBuy" 
-                            dataBuy={[this.props.data.userData.rec0mbuy,this.props.data.userData.rec1mbuy,this.props.data.userData.rec2mbuy,this.props.data.userData.rec3mbuy]} labelBuy="Buy" 
-                            dataHold={[this.props.data.userData.rec0mhold,this.props.data.userData.rec1mhold,this.props.data.userData.rec2mhold,this.props.data.userData.rec3mhold]} labelHold="Hold" 
-                            dataSell={[this.props.data.userData.rec0msell,this.props.data.userData.rec1msell,this.props.data.userData.rec2msell,this.props.data.userData.rec3msell]} labelSell="Sell" 
-                            dataSSell={[this.props.data.userData.rec0mstrongsell,this.props.data.userData.rec1mstrongsell,this.props.data.userData.rec2mstrongsell,this.props.data.userData.rec3mstrongsell]} 
+                            <Graph periods={[this.props.data.userData.rec1mperiod,this.props.data.userData.rec2mperiod,this.props.data.userData.rec3mperiod]} 
+                            dataSBuy={[this.props.data.userData.rec1mstrongbuy,this.props.data.userData.rec2mstrongbuy,this.props.data.userData.rec3mstrongbuy]} labelSBuy="StrongBuy" 
+                            dataBuy={[this.props.data.userData.rec1mbuy,this.props.data.userData.rec2mbuy,this.props.data.userData.rec3mbuy]} labelBuy="Buy" 
+                            dataHold={[this.props.data.userData.rec1mhold,this.props.data.userData.rec2mhold,this.props.data.userData.rec3mhold]} labelHold="Hold" 
+                            dataSell={[this.props.data.userData.rec1msell,this.props.data.userData.rec2msell,this.props.data.userData.rec3msell]} labelSell="Sell" 
+                            dataSSell={[this.props.data.userData.rec1mstrongsell,this.props.data.userData.rec2mstrongsell,this.props.data.userData.rec3mstrongsell]} 
                             labelSSell="Strong Sell"/>
 
                         </td>
@@ -102,7 +92,7 @@ class Display extends React.Component {
                 </tbody>
                 </table>
                 <div>
-                <p>{this.props.data.userData.longBusinessSummary}</p>
+                    <p>{this.props.data.userData.longBusinessSummary}</p>
                 </div>
             </div>
         )};
