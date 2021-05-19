@@ -77,6 +77,12 @@ a.link {
   color: steelblue;
 }
 
+@media only screen and (max-width: 1026px) {
+  canvas#myChart {
+    display: none;
+  }
+}
+
 canvas#myChart {
   padding: 3%;
 }
@@ -132,6 +138,8 @@ input.searchinput {
   font-family: 'Open Sans';
   font-size: 24px;
   color: darkorange;
+  text-align: left;
+  -webkit-text-stroke: medium;
 }
 
 .app-header p{
