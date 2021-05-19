@@ -29,8 +29,3 @@ export default function ASX100() {
       </div>
     );
 }
-
-
-
-
-

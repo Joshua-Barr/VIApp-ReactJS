@@ -1,4 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
+import { EmailIcon, LinkedinIcon, TwitterIcon} from "react-share";
+
 import Home from "./pages/Home"
 import ASX100 from "./pages/ASX100"
 import ASXETFS from "./pages/ASX ETFs"
@@ -19,7 +21,17 @@ export default function App() {
     return (
       <div>
         <header className="App-header">
-          <div><h1 className="Title">Value Investing</h1></div>
+          <table>
+            <tbody>
+              <td className="whitespace"></td>
+              <td><h1 className="Title">Value Investing</h1></td>
+              <td className="Icons">
+                <EmailIcon size={32} round={true} />
+                <TwitterIcon size={32} round={true} />
+                <LinkedinIcon size={32} round={true} />
+              </td>
+            </tbody>
+          </table>
         </header>
         <div className="App">
           <BurgerMenu />

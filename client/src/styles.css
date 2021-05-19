@@ -21,6 +21,10 @@ label {
   font-family: 'Open Sans';
 }
 
+body {
+  line-height: 1.88;
+}
+
 .spinner {
   font-size: 13px;
   padding: 2%;
@@ -33,6 +37,7 @@ select#sortables {
 
 .Title {
   font-size: 2.8rem;
+  text-align: center;
 }
 
 .h1, h1 {
@@ -61,6 +66,10 @@ p {
 td {
   width: 50%;
   text-align: left;
+}
+
+td.whitespace {
+  width: 25%;
 }
 
 a.link {
@@ -133,6 +142,10 @@ input.searchinput {
   color:var(--color-text-secondary)
 }
 
+td.Icons {
+  text-align: right;
+}
+
 /*-----------------------------------------------------Accordion CSS */
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap");
@@ -148,8 +161,8 @@ input.searchinput {
 .accordion__section {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 13px;
