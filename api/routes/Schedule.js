@@ -80,6 +80,74 @@ function scrapedata(tracker) {
         if (/^[\],:{}\s]*$/.test(formattedJSON.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
             try{
                 dataObject = JSON.parse(formattedJSON)
+
+                // Work out the Colours to set for display of the indicators
+                if(dataObject.earningsQuarterlyGrowth >= 0.15){earningsGrowthColour = "Green"}
+                if(dataObject.earningsQuarterlyGrowth >= 0){earningsGrowthColour = "Orange"}
+                else{
+                    if(dataObject.earningsQuarterlyGrowth < 0){earningsGrowthColour = "Red"}
+                }
+
+                if(dataObject.analysis.earningsTrend.trend[4].growth >= 0.15){predictedGrowthColour = "Green"}
+                if(dataObject.analysis.earningsTrend.trend[4].growth >= 0){predictedGrowthColour = "Orange"}
+                else{
+                    if(dataObject.analysis.earningsTrend.trend[4].growth < 0){predictedGrowthColour = "Red"}
+                }
+                
+                if(dataObject.pegRatio >= 1 ){priceEarningsGrowthColour = "Green"}
+                if(dataObject.pegRatio < 1){priceEarningsGrowthColour = "Orange"}
+
+                if(dataObject.fiveYearAvgDividendYield >= 2 ){aveDividendColour = "Green"}
+                if(dataObject.fiveYearAvgDividendYield >= 6 ){aveDividendColour = "Orange"}
+                else{
+                    if(dataObject.fiveYearAvgDividendYield < 0 ){aveDividendColour = "Orange"}
+                }
+                
+                if(dataObject.analysis.financialData.debtToEquity >= 0 ){debtEquityColour = "Green"}
+                if(dataObject.analysis.financialData.debtToEquity >= 200 ){debtEquityColour = "Orange"}
+                else{
+                    if(dataObject.analysis.financialData.debtToEquity < 0 ){debtEquityColour = "Red"}
+                }
+                
+                if(dataObject.analysis.financialData.returnOnEquity >= 0.15 ){returnEquityColour = "Green"}
+                if(dataObject.analysis.financialData.returnOnEquity < 0.15 ){returnEquityColour = "Orange"}
+                else{
+                    if(dataObject.analysis.financialData.returnOnEquity < 0 ){returnEquityColour = "Red"}
+                }
+                
+                if(dataObject.forwardEps > 0 ){forwardEpsColour = "Green"}
+                if(dataObject.forwardEps <= 0 ){forwardEpsColour = "Red"}
+                
+                if(dataObject.trailingEps > 0 ){trailingEpsColour = "Green"}
+                if(dataObject.trailingEps <= 0 ){trailingEpsColour = "Red"}
+                
+                if(dataObject.forwardPE <= 20 ){forwardPeRatioColour = "Green"}
+                if(dataObject.forwardPE > 20 ){forwardPeRatioColour = "Orange"}
+                if(dataObject.forwardPE > 80 ){forwardPeRatioColour = "Red"}
+                else{
+                    if(dataObject.forwardPE <= 0 ){forwardPeRatioColour = "Red"}
+                }
+
+                if(dataObject.trailingPE <= 20 ){trailingPeRatioColour = "Green"}
+                if(dataObject.trailingPE > 20 ){trailingPeRatioColour = "Orange"}
+                if(dataObject.trailingPE > 80 ){trailingPeRatioColour = "Red"}
+                else{
+                    if(dataObject.trailingPE <= 0 ){trailingPeRatioColour = "Red"}
+                }
+                
+                if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.7*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Green"}
+                else{
+                    if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Orange"}    
+                    else{
+                        if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.5) <= dataObject.regularMarketPrice ){fowardPriceColour = "Red"}
+                    }
+                }
+                
+                if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.92*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Green"}
+                else{
+                    if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Red"}
+                }
+
                 dataObject = {
                     tracker: tracker,
                     longName: dataObject.longName,
@@ -140,6 +208,32 @@ function scrapedata(tracker) {
                     rec3mhold: dataObject.analysis.recommendationTrend.trend[3].hold ,
                     rec3msell: dataObject.analysis.recommendationTrend.trend[3].sell,
                     rec3mstrongsell: dataObject.analysis.recommendationTrend.trend[3].sell,
+
+                    //Keys for setting the indicators colours when called by the display component
+                    // A high growth company will hit 15% or higher
+                    earningsGrowthColour: earningsGrowthColour,
+                    // A high growth company will hit 15% or higher
+                    predictedGrowthColour: predictedGrowthColour,
+                    // If PEG exceeds 1.0, it's considered overvalued, PEG of less than 1.0 is considered undervalued.
+                    priceEarningsGrowthColour: priceEarningsGrowthColour,
+                    // A yield between 2% and 6% is considered ideal
+                    aveDividendColour: aveDividendColour,
+                    // (Management) Generally, a good debt-to-equity ratio is anything lower than 1.0. A ratio of 2.0 or higher is usually considered risky. If a debt-to-equity ratio is negative, it means that the company has more liabilities than assets—this company would be considered extremely risky.
+                    debtEquityColour: debtEquityColour,
+                    // (Management) ROEs of 15–20% are generally considered good. ROE is also a factor in stock valuation, in association with other financial ratios.
+                    returnEquityColour: returnEquityColour,
+                    // (Management) Earnings per share (EPS) is calculated as a company's profit divided by the outstanding shares of its common stock. The resulting number serves as an indicator of a company's profitability.
+                    forwardEpsColour: forwardEpsColour,
+                    // (Management) Earnings per share (EPS) is calculated as a company's profit divided by the outstanding shares of its common stock. The resulting number serves as an indicator of a company's profitability.
+                    trailingEpsColour: trailingEpsColour,
+                    // The average P/E for the S&P 500 has historically ranged from 13 to 15. For example, a company with a current P/E of 25, above the S&P average, trades at 25 times earnings. The high multiple indicates that investors expect higher growth from the company compared to the overall market.
+                    forwardPeRatioColour: forwardPeRatioColour,
+                    // The average P/E for the S&P 500 has historically ranged from 13 to 15. For example, a company with a current P/E of 25, above the S&P average, trades at 25 times earnings. The high multiple indicates that investors expect higher growth from the company compared to the overall market.
+                    trailingPeRatioColour: trailingPeRatioColour,
+                    // Price is greater than the calcualted fair price - Red, Price is less than the calcualted fair price - Orange, Price is less than the calcualted 30% CI fair price - Green,
+                    fowardPriceColour: fowardPriceColour,
+                    // Calculated stoploss price at at 8% drop to sell out
+                    stoplossColour: stoplossColour 
                 }
                 console.log("Attempting to Save... " +tracker);
                 savetoDB( {Tracker: tracker, Time: Date.now().toString(), data: dataObject}, "scraped", database);

@@ -17,21 +17,6 @@ class Display extends React.Component {
         link : "link",
     }
 
-    this.setColourKey2 = "Grey"
-    this.setColourKey3 = "Grey"
-    this.setColourKey4 = "Grey"
-    this.setColourKey5 = "Grey"
-    this.setColourKey6 = "Grey"
-    this.setColourKey7 = "Grey"
-    this.setColourKey8 = "Grey"
-    this.setColourKey9 = "Grey"
-    this.setColourKey10 = "Grey"
-    this.setColourKey11 = "Grey"
-    this.setColourKey12 = "Grey"
-    this.setColourKey13 = "Grey"
-    this.setColourKey14 = "Grey"
-    this.setColourKey15 = "Grey"
-
     }
 
     render() {
@@ -71,7 +56,7 @@ class Display extends React.Component {
 
                         </td>
                         <td>
-                            <div><h3>KEY INDICATORS: (Meaning, Moat and Management) <br/></h3></div>
+                            <div><h3>KEY INDICATORS: (Value, Growth and Management) <br/></h3></div>
                             <div style={{color: `${this.setColourKey2}`}}><h3> (Value) Quarterly Earnings Growth (YoY): {parseFloat(this.props.data.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h3></div>
                             <div style={{color: `${this.setColourKey5}`}}><h3> (Growth) Predicted Growth in 5 Years: {parseFloat(this.props.data.userData.growthRate*100).toPrecision(4)}% </h3></div>
                             <div style={{color: `${this.setColourKey6}`}}><h3> (Growth) Price / Earnings / Growth (P/E/G): {this.props.data.userData.pegRatio} </h3></div>
@@ -80,7 +65,6 @@ class Display extends React.Component {
                             <div style={{color: `${this.setColourKey10}`}}><h3> (Management) Return on Equity: {parseFloat(this.props.data.userData.returnOnEquity*100).toPrecision(4)}% </h3></div>
                             <div style={{color: `${this.setColourKey11}`}}><h3> (Management) Earnings Per Share <br/> Forward EPS: {this.props.data.userData.forwardEps} <br/> Trailing EPS: {this.props.data.userData.trailingEps} </h3></div>
                             <div style={{color: `${this.setColourKey3}`}}><h3> (Value) Price to Earnings <br/> Forward PE: {parseFloat(this.props.data.userData.forwardPE).toPrecision(4)} <br/> Trailing PE: {parseFloat(this.props.data.userData.trailingPE).toPrecision(4)} </h3></div>
-                            <div style={{color: `${this.setColourKey8}`}}><h3> <br/>Last 5yrs Earnings: </h3></div>
 
                             <div style={{color: `${this.setColourKey12}`}}><h3><br/> Calculated Fair Pricing on 15% Growth (Forward Indicators) <br/> Fair Price: {parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)/2).toPrecision(4)} <br/> 30% Confidence: {parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.7*0.5).toPrecision(4)}</h3></div>
                             <div style={{color: `${this.setColourKey13}`}}><h3><br/> Calculated Fair Pricing on 15% Growth (Historic Indicators) <br/> Fair Price: {parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.trailingEps * this.props.data.userData.forwardPE)/2).toPrecision(4)} <br/> 30% Confidence: {parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.trailingEps * this.props.data.userData.forwardPE)*0.7*0.5).toPrecision(4)}</h3></div>
