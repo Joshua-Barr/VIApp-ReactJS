@@ -60,7 +60,7 @@ async function iterateTrackers(stocks) {
     let sleep = require('util').promisify(setTimeout);
 
     var count = 1;
-    for(i = 800; stocklist.length >= i; i= i+4 ){
+    for(i = 0; stocklist.length >= i; i= i+4 ){
         stocksgroup = [stocklist[i],stocklist[i+1],stocklist[i+2],stocklist[i+3]]
         await sleep(8000).then(stocksgroup.map((tracker) => scrapedata(tracker)))
         console.log(stocksgroup)
