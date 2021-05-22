@@ -13,13 +13,13 @@ router.get("/*", function(req, res, next) {
     });
 });
 
-function GetQuery(reqtrackers, cb) {
+async function GetQuery(reqtrackers, cb) {
     var i = 0;
     var costRatio = 0;
     var stocksandData = []
 
     //Build the array
-    reqtrackers.map((Symbol, count) => {
+    await reqtrackers.map((Symbol, count) => {
         var regex = new RegExp("^[a-zA-Z0-9.]+$");
         if(!regex.test(Symbol)){
             stocksandData.push({"tracker": Symbol, "percentageDiff": 0, "data": { longName: "Failed Input Validation, Check the Tracker Requested" }});
@@ -29,27 +29,28 @@ function GetQuery(reqtrackers, cb) {
             var MongoClient = require('mongodb').MongoClient;
             var url = "mongodb://localhost:27017/";
     
-            MongoClient.connect(url, function(err, db) {
+            MongoClient.connect(url, async function (err, db) {
                 var dbo = db.db(database);
-                dbo.collection(collection).findOne({Tracker: Symbol}, function(err, data) {
-                    if(err) throw err;
-                    try{
-                        if(data !== null){
-                            costRatio = (((((1+(data.data.growthRate))** 5) * data.data.forwardEps * data.data.forwardPE)*0.5)/data.data.regularMarketPrice)
-                            stocksandData.push({"tracker": Symbol, "percentageDiff": costRatio, "data": data.data})
-                            i++
+                dbo.collection(collection).findOne({ Tracker: Symbol }, function (err, data) {
+                    if (err)
+                        throw err;
+                    try {
+                        if (data !== null) {
+                            costRatio = (((((1 + (data.data.growthRate)) ** 5) * data.data.forwardEps * data.data.forwardPE) * 0.5) / data.data.regularMarketPrice);
+                            stocksandData.push({ "tracker": Symbol, "percentageDiff": costRatio, "data": data.data });
+                            i++;
                         }
-                        else{ i++ }
+                        else { i++; }
                     }
-                    catch{
-                        stocksandData.push({"tracker": Symbol, "percentageDiff": 0,"data": "{ \"longName\": \"Failed to Parse JSON String\" }"})
-                        i++
+                    catch {
+                        stocksandData.push({ "tracker": Symbol, "percentageDiff": 0, "data": "{ \"longName\": \"Failed to Parse JSON String\" }" });
+                        i++;
                     }
-                
+
                     // Return the array
-                    if(reqtrackers.length === i){
+                    if (reqtrackers.length === i) {
                         sortedData = stocksandData.sort(compare);
-                        cb(err, sortedData)
+                        cb(err, sortedData);
                     }
                 });
             });

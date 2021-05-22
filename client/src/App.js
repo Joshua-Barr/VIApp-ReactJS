@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import { EmailIcon, LinkedinIcon, TwitterIcon} from "react-share";
 
 import Home from "./pages/Home"
+import EntireASX from "./pages/EntireASX"
 import ASX100 from "./pages/ASX100"
 import ASXETFS from "./pages/ASX ETFs"
 import SNP100 from "./pages/SNP100"
@@ -26,9 +27,9 @@ export default function App() {
               <td className="whitespace"></td>
               <td><h1 className="Title">Value Investing</h1></td>
               <td className="Icons">
-                <EmailIcon size={32} round={true} />
+                <EmailIcon size={32} round={true} href="https://au.linkedin.com/in/joshua-barr-03049a10b"/>
                 <TwitterIcon size={32} round={true} />
-                <LinkedinIcon size={32} round={true} />
+                <LinkedinIcon size={32} round={true} href="https://au.linkedin.com/in/joshua-barr-03049a10b"/>
               </td>
             </tbody>
           </table>
@@ -37,6 +38,7 @@ export default function App() {
           <BurgerMenu />
             <Switch>
               <Route path="/" component={Home} exact />
+              <Route path="/entireasx" component={EntireASX} exact />
               <Route path="/asx100" component={ASX100} />
               <Route path="/asxetfs" component={ASXETFS} />
               <Route path="/snp100" component={SNP100} />

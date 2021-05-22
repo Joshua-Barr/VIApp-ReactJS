@@ -16,8 +16,6 @@ export default function ASX100() {
 
     return (
       <div>
-      <label for="sort">Sort By: <br/></label>
-
       <select name="sort" id="sortables" onChange={handleChange} >
           <option value="none"></option>
           <option value="fair price">Price Ratio (Fair/Current)</option>

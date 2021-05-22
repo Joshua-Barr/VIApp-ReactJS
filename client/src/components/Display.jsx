@@ -71,7 +71,7 @@ class Display extends React.Component {
 
                         </td>
                         <td>
-                            <div><h3>KEY INDICATORS: (Meaning, Moat and Management) </h3></div>
+                            <div><h3>KEY INDICATORS: (Meaning, Moat and Management) <br/></h3></div>
                             <div style={{color: `${this.setColourKey2}`}}><h3> (Value) Quarterly Earnings Growth (YoY): {parseFloat(this.props.data.userData.earningsQuarterlyGrowth*100).toPrecision(4)}% </h3></div>
                             <div style={{color: `${this.setColourKey5}`}}><h3> (Growth) Predicted Growth in 5 Years: {parseFloat(this.props.data.userData.growthRate*100).toPrecision(4)}% </h3></div>
                             <div style={{color: `${this.setColourKey6}`}}><h3> (Growth) Price / Earnings / Growth (P/E/G): {this.props.data.userData.pegRatio} </h3></div>
@@ -92,7 +92,7 @@ class Display extends React.Component {
                 </tbody>
                 </table>
                 <div>
-                    <p>{this.props.data.userData.longBusinessSummary}</p>
+                    <p className="Summary">{this.props.data.userData.longBusinessSummary}</p>
                 </div>
             </div>
         )};

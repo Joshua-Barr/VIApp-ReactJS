@@ -77,6 +77,12 @@ a.link {
   color: steelblue;
 }
 
+p.Summary {
+  font-size: 15px;
+  font-family: sans-serif;
+  text-align: left;
+}
+
 @media only screen and (max-width: 1026px) {
   canvas#myChart {
     display: none;
@@ -135,11 +141,10 @@ input.searchinput {
 
 .home {
   padding: 8%;
-  font-family: 'Open Sans';
+  font-family: sans-serif;
   font-size: 24px;
   color: darkorange;
   text-align: left;
-  -webkit-text-stroke: medium;
 }
 
 .app-header p{
@@ -163,6 +168,7 @@ td.Icons {
   padding: 10px;
   font-weight: bolder;
   color: floralwhite;
+  font-size: 14px;
 }
 
 /* Style the accordion section */
@@ -359,7 +365,6 @@ a {
   color: #ababab;
   text-decoration: inherit;
   font-size: 18px;
-  font-family: 'Open Sans';
   font-weight: bold;
 }
 
