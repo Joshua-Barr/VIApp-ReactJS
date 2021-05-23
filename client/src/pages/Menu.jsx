@@ -16,7 +16,6 @@ class BurgerMenu extends React.Component {
                 <h2>Australian :</h2>
                 <a id="entireasx" className="menu-item" href="/entireasx">Entire ASX</a>
                 <a id="asx 100" className="menu-item" href="/asx100">ASX 100</a>
-                <a id="aus etfs" className="menu-item" href="/asxetfs">AUS ETF's</a>
                 <h2>United States :</h2>
                 <a id="snp 100" className="menu-item" href="/snp100">SNP 100</a>
                 <a id="snp 500" className="menu-item" href="/snp500">SNP 500</a>

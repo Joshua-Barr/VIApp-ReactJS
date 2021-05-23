@@ -35,6 +35,17 @@ select#sortables {
   font-family: 'Open Sans';
 }
 
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
 .Title {
   font-size: 2.8rem;
   text-align: center;

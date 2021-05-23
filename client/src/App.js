@@ -4,7 +4,6 @@ import { EmailIcon, LinkedinIcon, TwitterIcon} from "react-share";
 import Home from "./pages/Home"
 import EntireASX from "./pages/EntireASX"
 import ASX100 from "./pages/ASX100"
-import ASXETFS from "./pages/ASX ETFs"
 import SNP100 from "./pages/SNP100"
 import SNP500 from "./pages/SNP500"
 import Nasdaq100 from "./pages/Nasdaq-100"
@@ -40,7 +39,6 @@ export default function App() {
               <Route path="/" component={Home} exact />
               <Route path="/entireasx" component={EntireASX} exact />
               <Route path="/asx100" component={ASX100} />
-              <Route path="/asxetfs" component={ASXETFS} />
               <Route path="/snp100" component={SNP100} />
               <Route path="/snp500" component={SNP500} />
               <Route path="/nasdaq100" component={Nasdaq100} />

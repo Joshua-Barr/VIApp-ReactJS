@@ -78,6 +78,7 @@ function scrapedata(tracker) {
     pyprog.stdout.on('data', function(data) {
         var formattedJSON = (data.toString().replace(/{'/g, '{\"').replace(/\\/g, '.').replace(/'}/g, '\"}').replace(/': '/g, '\": \"').replace(/', '/g, '\", \"').replace(/':/g, '\":').replace(/, '/g, ', \"').replace(/None/g, '0').replace(/False/g, '0').replace(/True/g, '1').replace(/52Week/g, 'fiftytwoWeek').replace(/\"}\s/g, '\",'));
         if (/^[\],:{}\s]*$/.test(formattedJSON.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+            
             try{
                 dataObject = JSON.parse(formattedJSON)
 
@@ -88,12 +89,19 @@ function scrapedata(tracker) {
                     if(dataObject.earningsQuarterlyGrowth < 0){earningsGrowthColour = "Red"}
                 }
 
-                if(dataObject.analysis.earningsTrend.trend[4].growth >= 0.15){predictedGrowthColour = "Green"}
-                if(dataObject.analysis.earningsTrend.trend[4].growth >= 0){predictedGrowthColour = "Orange"}
-                else{
-                    if(dataObject.analysis.earningsTrend.trend[4].growth < 0){predictedGrowthColour = "Red"}
+                predictedGrowthColour = "Red"
+                if(typeof dataObject.analysis !== "undefined"){
+                    if(typeof dataObject.analysis.earningsTrend !== "undefined"){
+                        if(typeof dataObject.analysis.earningsTrend.trend !== "undefined"){
+                            if(dataObject.analysis.earningsTrend.trend[4].growth >= 0.15){predictedGrowthColour = "Green"}
+                            if(dataObject.analysis.earningsTrend.trend[4].growth >= 0){predictedGrowthColour = "Orange"}
+                            else{
+                                if(dataObject.analysis.earningsTrend.trend[4].growth < 0){predictedGrowthColour = "Red"}
+                            }
+                        }
+                    }
                 }
-                
+
                 if(dataObject.pegRatio >= 1 ){priceEarningsGrowthColour = "Green"}
                 if(dataObject.pegRatio < 1){priceEarningsGrowthColour = "Orange"}
 
@@ -103,18 +111,32 @@ function scrapedata(tracker) {
                     if(dataObject.fiveYearAvgDividendYield < 0 ){aveDividendColour = "Orange"}
                 }
                 
-                if(dataObject.analysis.financialData.debtToEquity >= 0 ){debtEquityColour = "Green"}
-                if(dataObject.analysis.financialData.debtToEquity >= 200 ){debtEquityColour = "Orange"}
-                else{
-                    if(dataObject.analysis.financialData.debtToEquity < 0 ){debtEquityColour = "Red"}
+                debtEquityColour = "Red"
+                if(typeof dataObject.analysis !== "undefined"){
+                    if(typeof dataObject.analysis.financialData !== "undefined"){
+                        if(typeof dataObject.analysis.financialData.debtToEquity !== "undefined"){
+                            if(dataObject.analysis.financialData.debtToEquity >= 0 ){debtEquityColour = "Green"}
+                            if(dataObject.analysis.financialData.debtToEquity >= 200 ){debtEquityColour = "Orange"}
+                            else{
+                                if(dataObject.analysis.financialData.debtToEquity < 0 ){debtEquityColour = "Red"}
+                            }
+                        }
+                    }
                 }
-                
-                if(dataObject.analysis.financialData.returnOnEquity >= 0.15 ){returnEquityColour = "Green"}
-                if(dataObject.analysis.financialData.returnOnEquity < 0.15 ){returnEquityColour = "Orange"}
-                else{
-                    if(dataObject.analysis.financialData.returnOnEquity < 0 ){returnEquityColour = "Red"}
+
+                returnEquityColour = "Red"
+                if(typeof dataObject.analysis !== "undefined"){
+                    if(typeof dataObject.analysis.financialData !== "undefined"){
+                        if(typeof dataObject.analysis.financialData.returnOnEquity !== "undefined"){
+                            if(dataObject.analysis.financialData.returnOnEquity >= 0.15 ){returnEquityColour = "Green"}
+                            if(dataObject.analysis.financialData.returnOnEquity < 0.15 ){returnEquityColour = "Orange"}
+                            else{
+                                if(dataObject.analysis.financialData.returnOnEquity < 0 ){returnEquityColour = "Red"}
+                            }
+                        }
+                    }
                 }
-                
+
                 if(dataObject.forwardEps > 0 ){forwardEpsColour = "Green"}
                 if(dataObject.forwardEps <= 0 ){forwardEpsColour = "Red"}
                 
@@ -134,18 +156,32 @@ function scrapedata(tracker) {
                 else{
                     if(dataObject.trailingPE <= 0 ){trailingPeRatioColour = "Red"}
                 }
-                
-                if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.7*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Green"}
-                else{
-                    if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Orange"}    
-                    else{
-                        if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.5) <= dataObject.regularMarketPrice ){fowardPriceColour = "Red"}
+
+                fowardPriceColour = "Red"
+                if(typeof dataObject.analysis !== "undefined"){
+                    if(typeof dataObject.analysis.earningsTrend !== "undefined"){
+                        if(typeof dataObject.analysis.earningsTrend.trend !== "undefined"){
+                            if(parseFloat((((1+(dataObject.analysis.earningsTrend.trend[4].growth))** 5) * dataObject.forwardEps * dataObject.forwardPE)*0.7*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Green"}
+                            else{
+                                if(parseFloat((((1+(dataObject.analysis.earningsTrend.trend[4].growth))** 5) * dataObject.forwardEps * dataObject.forwardPE)*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Orange"}    
+                                else{
+                                    if(parseFloat((((1+(dataObject.analysis.earningsTrend.trend[4].growth))** 5) * dataObject.forwardEps * dataObject.forwardPE)*0.5) <= dataObject.regularMarketPrice ){fowardPriceColour = "Red"}
+                                }
+                            }
+                        }
                     }
                 }
-                
-                if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.92*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Green"}
-                else{
-                    if(parseFloat((((1+(this.props.data.userData.growthRate))** 5) * this.props.data.userData.forwardEps * this.props.data.userData.forwardPE)*0.5) > dataObject.regularMarketPrice ){fowardPriceColour = "Red"}
+
+                stoplossColour = "Red"
+                if(typeof dataObject.analysis !== "undefined"){
+                    if(typeof dataObject.analysis.earningsTrend !== "undefined"){
+                        if(typeof dataObject.analysis.earningsTrend.trend !== "undefined"){
+                            if(parseFloat((((1+(dataObject.analysis.earningsTrend.trend[4].growth))** 5) * dataObject.forwardEps * dataObject.forwardPE)*0.92*0.5) > dataObject.regularMarketPrice ){stoplossColour = "Green"}
+                            else{
+                                if(parseFloat((((1+(dataObject.analysis.earningsTrend.trend[4].growth))** 5) * dataObject.forwardEps * dataObject.forwardPE)*0.5) > dataObject.regularMarketPrice ){stoplossColour = "Red"}
+                            }
+                        }
+                    }
                 }
 
                 dataObject = {
