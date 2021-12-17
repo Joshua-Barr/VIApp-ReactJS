@@ -27,10 +27,10 @@ sudo apt install python3-pip
 sudo apt install unzip
 wget https://github.com/Shortlived/VIApp-ReactJS/archive/refs/heads/main.zip
 unzip main.zip
-sudo python3 pip install yfinance
-nano VIApp-ReactJS/client/src/components/Sharesdisplay.jsx
-nano VIApp-ReactJS/client/src/components/SharesSort.jsx
-nano VIApp-ReactJS/api/routes/Schedule.jsx
+sudo python3 -m pip install yfinance
+sudo nano VIApp-ReactJS/client/src/components/Sharesdisplay.jsx
+sudo nano VIApp-ReactJS/client/src/components/SharesSort.jsx
+sudo nano VIApp-ReactJS/api/routes/Schedule.jsx
 
 cd client
 npm install
