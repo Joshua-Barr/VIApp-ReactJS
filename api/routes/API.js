@@ -29,7 +29,7 @@ function GetQuery(reqtracker, cb) {
                 if(err) throw err;
             
                 if(data === null){
-                    cb(err, {longName: "Data Not Available"});
+                    cb(err, {longName: "Data Not Available: Check the Tracker has been scraped to the DB"});
                 }
                 else{
                     if(data.data === "undefined"){
